@@ -1,0 +1,10 @@
+
+// b!bord.baf - spawns landlord 
+
+IF 
+    Global("B!KlandSpawn","B!BORD",0) 
+THEN 
+    RESPONSE #100 
+        CreateCreature("b!kland",[376.481],8) 
+        SetGlobal("B!KlandSpawn","B!BORD",1) 
+END 

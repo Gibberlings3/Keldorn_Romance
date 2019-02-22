@@ -1,0 +1,14 @@
+
+// Respawns Keldorn's family after they get back from the circus
+
+IF 
+    Global("B!KelRomFamilyRespawn","GLOBAL",1) 
+    GlobalTimerExpired("B!FamilyRespawn","GLOBAL") 
+THEN 
+    RESPONSE #100 
+        CreateCreature("Maria",[230.405],0) 
+        CreateCreature("Leona",[717.292],1) 
+        CreateCreature("Vesper",[476.326],0) 
+        CreateCreature("Peony",[632.527],0) 
+        SetGlobal("B!KelRomFamilyRespawn","GLOBAL",2) 
+END 

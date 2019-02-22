@@ -1,0 +1,30 @@
+
+// b!ar0313.baf - Keldorn's quest stuff at the Sea's Bounty  
+
+IF 
+    Global("B!PorterSpawn","AR0313",0) 
+THEN 
+    RESPONSE #100 
+        CreateCreature("b!porter",[237.451],0) 
+        SetGlobal("B!PorterSpawn","AR0313",1) 
+        Continue() 
+END 
+
+IF 
+    Global("B!KelPickLock","GLOBAL",1) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+THEN 
+    RESPONSE #100 
+        ActionOverride(Player1,StartDialogue("player1",Player1)) 
+END 
+
+IF 
+    Exists("Keldorn") 
+    Exists(Player1)                                         // Cannot run the first time the area is entered, so it doesn't need Continue() 
+    GlobalGT("B!KelQuest","GLOBAL",20) 
+    GlobalLT("B!KelQuest","GLOBAL",24) 
+THEN 
+    RESPONSE #100 
+        CreateCreature("b!vakola",[530.339],14) 
+        SetGlobal("B!KelQuest","GLOBAL",24) 
+END 

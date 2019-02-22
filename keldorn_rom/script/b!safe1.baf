@@ -1,0 +1,25 @@
+
+// b!safe1.baf - gets party to the safe house 
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        FadeToColor([20.0],0)
+        Wait(1)
+        LeaveAreaLUAPanic("b!safe","",[975.389],4)
+        LeaveAreaLUA("b!safe","",[975.389],4)
+        ActionOverride(Player2,MoveBetweenAreas("b!safe",[988.351],4)
+        ActionOverride(Player3,MoveBetweenAreas("b!safe",[991.403],4)
+        ActionOverride(Player4,MoveBetweenAreas("b!safe",[1030.377],4)
+        ActionOverride(Player5,MoveBetweenAreas("b!safe",[1019.423],4)
+        ActionOverride(Player6,MoveBetweenAreas("b!safe",[1071.405],4)
+        MultiPlayerSync()
+        Explore()
+        Wait(1)
+        FadeFromColor([20.0],0)
+        MoveViewObject(Player1,INSTANT)
+        Wait(1)
+        EndCutSceneMode() 
+END

@@ -1,0 +1,267 @@
+
+/* b!keldorn_rom_tob.baf */ 
+
+/* Morning Afer */ 
+/* Challenges */ 
+/* Timered Talks */ 
+
+/* Morning Afer */ 
+
+IF 
+    InParty(Myself) 
+    Global("B!KR_ToBMorning","GLOBAL",0) 
+    Global("B!KeldornSex","GLOBAL",1) 
+    Global("B!KeldornRA","GLOBAL",2) 
+    CombatCounter(0) 
+    See(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KR_ToBMorning","GLOBAL",1) 
+END 
+
+IF 
+    InParty(Myself) 
+    Global("B!KR_ToBMorning","GLOBAL",1) 
+    CombatCounter(0) 
+    See(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+THEN 
+    RESPONSE #100 
+        PlaySong(0) 
+        PlaySound("bkelsong") 
+        StartDialogueNoSet(Player1)  
+END 
+
+/* Challenges */ 
+
+IF 
+    InParty(Myself) 
+    Global("GavePocketPlane","GLOBAL",1) 
+    AreaCheck("AR4500") 
+    Global("B!KR_ToBc1","GLOBAL",0) 
+    !Global("B!KeldornRA","GLOBAL",0) 
+    !Global("B!KeldornRA","GLOBAL",3) 
+    CombatCounter(0) 
+    See(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    OR(3) 
+      !InParty("c-Reynald") 
+      !InMyArea("c-Reynald") 
+      StateCheck("c-Reynald",CD_STATE_NOTVALID)       // If Rey and Keldorn are in the party together, there's a special talk planned 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KR_ToBc1","GLOBAL",1) 
+END 
+
+IF 
+    InParty(Myself) 
+    Global("B!KR_ToBc1","GLOBAL",1) 
+    !Global("B!KeldornRA","GLOBAL",0) 
+    !Global("B!KeldornRA","GLOBAL",3) 
+    CombatCounter(0) 
+    See(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+THEN 
+    RESPONSE #100 
+        PlaySong(0) 
+        PlaySound("bkelsong") 
+        StartDialogueNoSet(Player1)  
+END 
+
+IF 
+    GlobalGT("BeginChallenge2","GLOBAL",2)
+    Global("B!KR_ToBc2","GLOBAL",0)
+    Global("B!KeldornRA","GLOBAL",2) 
+    InParty(Myself)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    See(Player1)
+    CombatCounter(0)
+    !See([ENEMY])
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KR_ToBc2","GLOBAL",1) 
+END
+
+IF 
+    InParty(Myself) 
+    Global("B!KR_ToBc2","GLOBAL",1) 
+    Global("B!KeldornRA","GLOBAL",2) 
+    CombatCounter(0) 
+    See(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+THEN 
+    RESPONSE #100 
+        PlaySong(0) 
+        PlaySound("bkelsong") 
+        StartDialogueNoSet(Player1)  
+END 
+
+IF 
+    InParty(Myself) 
+    Global("ChallengesDone","GLOBAL",1) 
+    PartyRested() 
+    Global("B!KR_ToBc5","GLOBAL",0) 
+    Global("B!KeldornRA","GLOBAL",2) 
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    See(Player1)
+    CombatCounter(0)
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KR_ToBc5","GLOBAL",1)
+END 
+
+IF 
+    InParty(Myself) 
+    Global("B!KR_ToBc5","GLOBAL",1) 
+    Global("B!KeldornRA","GLOBAL",2) 
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    See(Player1)
+    CombatCounter(0)
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        PlaySong(0) 
+        PlaySound("bkelsong") 
+        StartDialogueNoSet(Player1) 
+END 
+
+IF 
+    InParty(Myself) 
+    Global("B!KelToBOasis","GLOBAL",0) 
+    Dead("amtgen01") 
+    AreaCheck("AR6300") 
+    Global("B!KeldornRA","GLOBAL",2) 
+    GlobalGT("TethyrBattleStart","GLOBAL",0) 
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KelToBOasis","GLOBAL",1) 
+END 
+
+IF 
+    InParty(Myself) 
+    Global("B!KelToBOasis","GLOBAL",1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+    See(Player1) 
+THEN 
+    RESPONSE #100 
+        PlaySong(0) 
+        PlaySound("bkelsong") 
+        StartDialogueNoSet(Player1) 
+END 
+IF 
+    InParty(Myself) 
+    AreaCheck("AR5500") 
+    Global("B!KeldornRA","GLOBAL",2) 
+    GlobalGT("SaemonPlot","GLOBAL",0) 
+    Global("B!KR_Amkethran","GLOBAL",0) 
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    See(Player1)
+    CombatCounter(0)
+    !See([ENEMY])
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KR_Amkethran","GLOBAL",1) 
+END
+
+IF 
+    InParty(Myself) 
+    Global("B!KR_Amkethran","GLOBAL",1) 
+    CombatCounter(0) 
+    See(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+THEN 
+    RESPONSE #100 
+        PlaySong(0) 
+        PlaySound("bkelsong") 
+        StartDialogueNoSet(Player1)  
+END 
+
+/* Timered Talks */ 
+
+IF 
+    InParty(Myself) 
+    RealGlobalTimerExpired("B!KelToBTime","GLOBAL") 
+    Global("B!KelToBLT","GLOBAL",3) 
+    Global("B!KeldornRA","GLOBAL",2) 
+    CombatCounter(0) 
+    See(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KelToBLT","GLOBAL",6) 
+END 
+
+IF 
+    InParty(Myself) 
+    Global("B!KelToBLT","GLOBAL",6) 
+    Global("B!KeldornRA","GLOBAL",2) 
+    CombatCounter(0) 
+    See(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+THEN 
+    RESPONSE #100 
+        PlaySong(0) 
+        PlaySound("bkelsong") 
+        StartDialogueNoSet(Player1)  
+END 
+
+
+IF 
+    InParty(Myself) 
+    RealGlobalTimerExpired("B!KelToBTime","GLOBAL") 
+    Global("B!KeldornRA","GLOBAL",2) 
+    CombatCounter(0) 
+    See(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    OR(5) 
+        Global("B!KelToBLT","GLOBAL",7) 
+        Global("B!KelToBLT","GLOBAL",9) 
+        Global("B!KelToBLT","GLOBAL",11) 
+        Global("B!KelToBLT","GLOBAL",13) 
+        Global("B!KelToBLT","GLOBAL",15) 
+THEN 
+    RESPONSE #100 
+        IncrementGlobal("B!KelToBLT","GLOBAL",1) 
+END 
+
+IF 
+    InParty(Myself) 
+    Global("B!KeldornRA","GLOBAL",2) 
+    CombatCounter(0) 
+    See(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    OR(5) 
+        Global("B!KelToBLT","GLOBAL",8) 
+        Global("B!KelToBLT","GLOBAL",10) 
+        Global("B!KelToBLT","GLOBAL",12) 
+        Global("B!KelToBLT","GLOBAL",14) 
+        Global("B!KelToBLT","GLOBAL",16) 
+THEN 
+    RESPONSE #100 
+        PlaySong(0) 
+        PlaySound("bkelsong") 
+        StartDialogueNoSet(Player1)  
+END 

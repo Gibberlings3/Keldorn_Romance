@@ -1,0 +1,10 @@
+
+// b!kbutlr.baf - butler's override script 
+
+IF 
+    Global("B!KelQuest","GLOBAL",14) 
+    InMyArea(Player1) 
+THEN 
+    RESPONSE #100 
+        StartDialogueNoSet(Player1) 
+END 

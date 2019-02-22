@@ -1,0 +1,18 @@
+/* Ignore Anomen Romance for some lovetalks (is set to committed independent of reply options - need fix */
+
+IF
+	Global("B!KeldornIgnoreAnomenRom","GLOBAL",0) 
+	GlobalGT("LoveTalk","LOCALS",27)
+THEN
+	RESPONSE #100
+		SetGlobal("B!KeldornIgnoreAnomenRom","GLOBAL",1)
+END
+
+/* Anomen asked for love night - Keldorn won't ignore this */
+IF
+	Global("B!KeldornIgnoreAnomenRom","GLOBAL",1)
+	GlobalGT("LoveTalk","LOCALS",31)
+THEN
+	RESPONSE #100
+		SetGlobal("B!KeldornIgnoreAnomenRom","GLOBAL",0)
+END

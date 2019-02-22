@@ -1,0 +1,135 @@
+
+B!KeldornRA: Keldorn's romance variable 
+    0 = none 
+    1 = recovery and initial attraction 
+    2 = in love with PC, as committed as the romance will get, happens in ToB 
+    3 = broken 
+    
+B!KelLT: lovetalks 
+    0 = not yet
+    1 = timer set 
+    2 = talk 1 - Unreal - ~I keep thinking that I will wake up and this will all have been a dream.~ 
+    4 = talk 2 -
+    
+B!KeldornRomReturn: Keldorn deals with Maria and she kicks him out
+    0 = not initiated
+    1 = Keldorn and Maria reconciled
+    2 = timer set 
+    3 = timer expired
+        InPartyAllowDead("Keldorn") !Dead("Keldorn"): spawn messenger
+        InPartyAllowDead("Keldorn") Dead("Keldorn"): spawn messenger when he's revived
+        !InPartyAllowDead("Keldorn"): Not much to see here. If he's dead and out of the party, he's out of the game. Remember to shut off the romance.
+    3 = messenger spawns when Keldorn is valid for party dialogue, outdoors, and somewhere in Athkatla
+    4 = messenger talked to Keldorn and delivered letter 
+    5 = Keldorn talked about letter and left the party. Timer set.
+    6 = Keldorn returns to the party
+    7 = Keldorn cued to talk to the PC upon his return 
+    8 = Keldorn has attempted to rejoin
+        Accepted: no action
+        Rejected: set KickedOut, kill romance, no further action
+        
+B!KelQuest: Keldorn's quest (not romance-related) 
+    0 = not initiated 
+    1 = initial timer set (two days after his family quests are done) 
+    2 = timer expired, Zasheida spawned (b!ar0300.baf) 
+    3 = Zasheida bumped into Keldorn 
+    4 = Keldorn debriefing cued 
+    5 = Keldorn debriefing happened 
+    6 = Keldorn entered the Sea's' Bounty, dialogue cued
+    7 = Keldorn pointed her out 
+    8 = the party has Zasheida's journal 
+    9 = the party uses the journal to reach the hovel 
+    10 = Keldorn cued to observe (empty) condition of hovel 
+    11 = Keldorn observed (empty) condition of hovel 
+    12 = Livery found, cues Keldorn's recognition of it 
+    13 = Keldorn has identified the livery and offered to take the PC to the estate
+    14 = PC has asked Keldorn to lead her to the safe house 
+    15 = PC has spoken to the butler in the safe house 
+    16 = PC has obtained the ship charters implicating Vakola 
+    17 = cues Vakola to spawn in the Slums  
+    18 = Vakola spawned in the slums, cued to speak to Keldorn 
+    19 = Vakola spoke to Keldorn  
+    20 = Keldorn cued to speak to the PC after Vakola left 
+    21 = Keldorn spoke to the PC after Vakola left 
+    22 = Timer ran out after Vakola's initial appearance 
+    23 = Vakola spawns near Keldorn 
+    24 = Vakola spawns in the Sea's Bounty 
+    24 = Vakola spoke to Keldorn in either place 
+
+B!KelZashRoom: PC is invited to Zasheida's room
+    0 = not initiated 
+    1 = PC is invited to Zasheida's room 
+    2 = Zasheida left to get wine 
+    3 = PC found the journal and Zasheida returns 
+    4 = Zasheida talked to the PC on her return (PC can return to the common room now) 
+    5 = PC has sex with Zasheida, cues fade-to-black 
+    6 = Sex over, Zasheida talks to the PC (PC must return to the common room now) 
+    7 = Zasheida said goodbye to the PC in the common room 
+    20 = PC insulted Zasheida
+    21 = PC confronted Zasheida in her room after insulting her
+
+B!ZasheidaSex: PC had sex with Zasheida 
+    0 = Nothing happened
+    1 = PC had sex with her 
+
+B!KelDistractJuggle: PC has decided to distract the butler with juggling
+    0 = not chosen 
+    1 = PC and Keldorn pose as jugglers 
+    2 = Keldorn speaks to the PC outside the safe house when it's all over 
+    
+B!KelDistractWine: PC has decided to distract the butler with a wine sampling
+    0 = not yet chosen
+    1 = PC has decided to pose as wine merchants
+    2 = PC has offered the butler a wine sampling and has been conducted to the cellars
+    3 = The wine tasting is over and the butler has escorted the PC back to the foyer 
+    4 = butler has spoken to the PC in the foyer 
+    5 = Keldorn cued to speak to the PC after they have left the safe house 
+    6 = Keldorn spoke to the PC after they left the safe house 
+
+B!KelDistractSex: charismatic PC of either gender can lure the butler to the cellar with the promise of sex 
+    0 = not chosen 
+    1 = PC has successfully propositioned the butler 
+    2 = cutscene sex cued 
+    3 = butler has escorted the PC back to the foyer 
+    4 = butler has spoken to the PC in the foyer 
+    5 = Keldorn cued to speak to the PC after they have left the safe house 
+    6 = Keldorn spoke to the PC after they left the safe house 
+
+B!KelButlerSex: PC has enticed the butler to have sex with him/her (willing participant)
+    0 = not completed 
+    1 = act completed 
+
+B!KelDistractBadger: PC can lure the butler of the safe house to the cellar to discuss the neighborhood complaints of badger breeding 
+    0 = not chosen 
+    1 = PC has successfully lured the butler to the cellar 
+    2 = PC has coerced the butler to perform an unspecified act involving the loosening of belts and the adjustment of clothing 
+    3 = butler has escorted the PC back to the foyer 
+    4 = butler has spoken to the PC in the foyer 
+    5 = Keldorn cued to speak to the PC after they have left the safe house 
+    6= Keldorn spoke to the PC after they left the safe house 
+
+B!KelSafeHouseFight: PC's attempts to avoid bloodshed were unsuccessful
+    0 = nothing happened yet 
+    1 = a fight broke out 
+    2 = fight over, Keldorn dialogue cued 
+    3 = Keldorn dialogue happened 
+    4 = PC has recovered the ship charters, cues Keldorn dialogue
+    5 = Keldorn dialogue happened 
+
+B!KelQuestFight: Keldorn's quest ended in violence 
+    0 = not ended in violence
+    1 = fight started 
+    2 = Vakola and friends dead, Keldorn's dialogue cued 
+    3 = Keldorn's dialogue happened 
+
+B!KelQuestBetray: the PC betrayed Keldorn 
+    0 = didn't go that way 
+    1 = Keldorn left the party to fight Vakola alone 
+    2 = (if Keldorn survives) Keldorn cued to speak with the PC after the fight 
+    3 = Keldorn spoke with the PC after the fight and left the area 
+
+B!KelQuestResolve: Keldorn's quest was resolved peacefully 
+    0 = not resolved peacefully 
+    1 = resolved peacefully 
+    2 = Keldorn's follow-up dialogue cued 
+    3 = Keldorn's follow-up dialogue happened

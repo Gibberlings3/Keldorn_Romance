@@ -1,0 +1,27 @@
+
+// b!zkey1.baf - getting into Zasheida's room 
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        StorePartyLocations()
+        Wait(1)
+        FadeToColor([20.0],0)
+        Wait(1)
+        LeaveAreaLUAPanic("b!inn1","",[209.231],0)
+        LeaveAreaLUA("b!inn1","",[209.231],0)
+        ActionOverride(Player2,MoveBetweenAreas("b!inn1",[247.222],0)
+        ActionOverride(Player3,MoveBetweenAreas("b!inn1",[208.195],0)
+        ActionOverride(Player4,MoveBetweenAreas("b!inn1",[241.187],0)
+        ActionOverride(Player5,MoveBetweenAreas("b!inn1",[223.149],0)
+        ActionOverride(Player6,MoveBetweenAreas("b!inn1",[257.146],0)
+        MultiPlayerSync()
+        Explore()
+        Wait(1)
+        FadeFromColor([20.0],0)
+        MoveViewObject(Player1,INSTANT)
+        Wait(1)
+        EndCutSceneMode() 
+END 

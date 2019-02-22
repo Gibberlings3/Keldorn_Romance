@@ -1,0 +1,207 @@
+/* numbers 50000 - 59999 reserved for the setup.tra */
+
+@0    = ~Butler~
+@1    = ~I trust all is well?~ [NOBMA201]
+@2    = ~I trust you are aware of who you're dealing with?~ [NOBMA204]
+@3    = ~Run! Run! Before they kill us all!~ [NOBMA209]
+@4    = ~[NOBMA207]~ [NOBMA207]
+@5    = ~[NOBMA208]~ [NOBMA208]
+@6    = ~Boy~
+@7    = ~Artist~
+@8    = ~Oh, this is not my day at all.~ [VOLO02]
+@9    = ~Perhaps some other time! I'm not in the mood for fighting today... or any day.~ [VOLO03]
+@10   = ~[VOLO08]~ [VOLO08]
+@11   = ~[VOLO09]~ [VOLO09]
+@12   = ~Awfully familiar with that pointer, aren't you? And after only one drink, too...~ [VOLO06]
+@13   = ~Guard~
+@14   = ~Yeah, be off with ye!~ [RUFFIA03]
+@15   = ~Alright! You and me! Let's go!~ [RUFFIA05]
+@16   = ~I give! I give!~ [RUFFIA08]
+@17   = ~Stay back, or ye'll regret it!~ [RUFFIA01]
+@18   = ~[RUFFIA06]~ [RUFFIA06]
+@19   = ~[RUFFIA07]~ [RUFFIA07]
+@20   = ~Landlord~
+@21   = ~Top o' the day to ye!~ [PEASM301]
+@22   = ~Bloke can't walk five feet these days without somebody hitting him up.~ [PEASM305]
+@23   = ~I must flee!~ [PEASM309]
+@24   = ~[PEASM307]~ [PEASM307]
+@25   = ~[PEASM308]~ [PEASM308]
+@26   = ~Fine bit o' weather, isn't it?~ [PEASM302]
+@27   = ~Unlicensed Mage~
+@28   = ~Porter~
+@29   = ~You need something, stranger?~ [GENMG04]
+@30   = ~You said something?~ [GENMG07]
+@31   = ~Vakola~
+@32   = ~What would you have of me?~ [BALTHA01]
+@33   = ~Die, as you must!~ [BALTHA02]
+@34   = ~I shall not fail!~ [BALTHA03]
+@35   = ~[BALTHA04]~ [BALTHA04]
+@36   = ~[BALTHA05]~ [BALTHA05]
+@37   = ~Zasheida~
+@38   = ~Away with you! Do not touch me!~ [NOBFE09]
+@39   = ~[NOBFE07]~ [NOBFE07]
+@40   = ~[NOBFE08]~ [NOBFE08]
+@41   = ~Do you have something you wish to say?~ [NOBFE02]
+@42   = ~Jolian~
+@43   = ~Message from Maria~
+@44   = ~Keldorn,
+
+I have given much thought to our marriage, of late, and my heart is troubled. It is imperative that you return to your estate immediately to discuss matters of grave importance. This is a private matter, Keldorn, and does not concern your new friend. I will not detain you long, but I must ask that you return alone. 
+
+M.~
+@45   = ~Sketch of Vakola~
+@46   = ~This charcoal sketch is a surprisingly good likeness of Vakola, Keldorn's adversary and one-time friend.~
+@47   = ~Keldorn's Ring~
+@48   = ~Keldorn received this ring at his knighting from his friend and one-time mentor, Sir Kosef. Keldorn gave you the ring as a symbol of the enduring friendship you share.~
+@49   = ~Long Death~
+@50   = ~By far the oldest and most often used pole-arm, the halberd consists of a cleaver-like axe blade mounted on a staff averaging six feet in length.  The axe blade is balanced at the rear with a fluke, and surmounted by a sharp spike, usually of quadrangular design.  The fluke is sometimes replaced by a hook used to dismount cavalry.  A halberd can be best described as a cross between a spear and an axe.  
+
+STATISTICS:
+
+Damage:  1D10
+Damage type:  piercing
+Weight: 12
+Speed Factor: 9
+Proficiency Type: Halberd
+Type:  2-handed
+Requires: 13 Strength
+Not Usable By:
+ Druid
+ Cleric
+ Mage
+ Thief~
+@51   = ~Death is swift, and it is cold. Both can also be said of this halberd. Once, it belonged to Vakola, Keldorn's enemy, but now, it is yours.  
+
+STATISTICS:
+
+THAC0: +3 bonus
+Damage:  1D10 +2, +2 points of cold damage
+Damage type:  piercing
+Weight: 12
+Speed Factor: 7
+Proficiency Type: Halberd
+Type:  2-handed
+Requires: 13 Strength
+Not Usable By:
+ Druid
+ Cleric
+ Mage
+ Thief~
+@52   = ~Livery~
+@53   = ~These garments appear to be a servant's livery. Keldorn recognizes the household as one in the Government district. He can take you to the estate, should you desire it.~
+@54   = ~Ship Charters~
+@55   = ~These documents appear to be receipts for the transport of several individuals to Memnon by sea. The dates span almost a decade, and all are signed by a person by the name of Vakola. The conditions on the charter state that the passenger will share a mess with the ship's officers, that the passenger must be granted privacy to study, and that the passenger will help defend the ship by arcane means in the event that the vessel is attacked.~
+@56   = ~Zasheida's Journal~
+@57   = ~For the most part, Zasheida's journal deals with the day-to-day frustrations of running a successful business while eluding Cowled Wizards. She expresses frequent exasperation that a person identified only as 'V' is becoming increasingly fanatical... and increasingly distant. She fears that their mutual enterprise may suffer because of V's growing aloofness.
+
+On the last page of the journal, she complains that a recent surge in Athkatlan guard activity has necessitated the abandonment of a 'warehouse' in the Docks, but states that V has procured and outfitted a new location in the slums. She laments that conditions in the new location are deplorable, but that it must serve until the cargo can be transferred to the 'safe house' to await its departure for Memnon.
+
+The location of the 'safe house' is not identified, but the journal contains clear and precise directions to the new storage area in the Slums. Anyone interested in finding it would merely have to go to the landmark specified, the dry-docked ship in the Slums, and follow the directions from there.~
+@58   = ~Key to Zasheida's Room~
+@59   = ~This ordinary-looking key has a number etched on it, which will make it easier to find Zasheida's room. The porter would appreciate the return of the key when you have finished with it.~
+@60   = ~Zasheida's Talon~
+@61   = ~The Scimitar is closely related to the saber, a single-edged curved sword with protective hilt.  A Scimitar has a greater curve and is tapered to an elongated, sharp point. The origins of the scimitar are largely unknown, though they have proven popular in the southern region of the Forgotten Realms.
+
+STATISTICS:
+
+Damage:  1D8
+Damage type:  Slashing
+Weight:  3
+Proficiency Type: Scimitar
+Speed Factor:  5
+Type:  1-handed
+Requires: 8 Strength
+Not usable by:
+ Mage
+ Cleric~
+@62   = ~This scimitar is slender and dangerous, like the woman who once owned it. Besides being an exceptionally fast weapon, it makes the wielder slightly harder to hit.
+
+STATISTICS:
+
+THAC0 Bonus: +3 
+AC Bonus: +2 
+
+Damage:  1D8 +3
+Damage type:  Slashing
+Weight:  3
+Proficiency Type: Scimitar
+Speed Factor:  2
+Type:  1-handed
+Requires: 8 Strength
+Not usable by:
+ Mage
+ Cleric~
+@63   = ~Leona~
+@64   = ~Wyllim~
+
+
+/* Journal entries */
+@10000  = ~A Bump with the Past: <CHARNAME>, the Wine Merchant.
+
+When we reached the estate Keldorn identified, I posed as a wine merchant and convinced the major domo to participate in a tasting. As anticipated, the man cared little for the wines I brought, but the distraction was enough for my companions to locate the documents linking Keldorn's former friend Vakola to an operation that smuggles unlicensed mages out of Athkatla.~
+@10001  = ~A Bump with the Past: A Stranger's Allure. 
+
+When we reached the estate Keldorn identified, I lured the major domo into the basement with flatteries and seductive glances. The distraction was enough for my companions to locate the documents linking Keldorn's former friend Vakola to an operation that smuggles unlicensed mages out of Athkatla.~
+@10002  = ~A Bump with the Past: An Inventive Ruse.
+
+When we reached the estate Keldorn identified, I posed as a law enforcement officer and accused the major domo of unlicensed badger breeding. He was understandably skeptical, but accompanied me to the cellar where we could discuss the 'charges' against him in private. All in all, the plan was a success. I gained the opportunity to have a few laughs at the major domo's expense and my companions gained the time they needed to locate the documents linking Keldorn's former friend Vakola to an operation that smuggles unlicensed mages out of Athkatla.~
+@10003  = ~A Bump with the Past: Acquaintance Renewed.
+
+Keldorn bumped into an old acquaintance that he believes is engaged in some kind of illegal activity. He has asked me to investigate the matter and has suggested that we start looking at the Sea's Bounty.~
+@10004  = ~A Bump with the Past: Zasheida Found. 
+
+We located Zasheida at the Sea's Bounty. I might try talking to her, but Keldorn suggests some other means of gaining access to her room. Perhaps the innkeeper or the porter can help me.~
+@10005  = ~A Bump with the Past: Zasheida's Journal. 
+
+Zasheida's journal points the way to a warehouse of sorts. There is no street address, but the landmarks seem clear enough. Once I am in the Slums, I should be able to use the journal to find the place.~
+@10006  = ~A Bump with the Past: An Empty Warehouse.
+
+We reached the warehouse described in Zasheida's journal. Keldorn suggests that we search it for clues.~
+@10007  = ~A Bump with the Past: Livery in the Warehouse. 
+
+Keldorn has identified the livery we found in the warehouse as belonging to one of the estates in his neighborhood. He believes that a search of the property may turn up more clues, and says that he can lead us there, but that we should call during daylight hours. He fears that a violent dispute might arise and does not want to risk the lives of any innocents that might be home at the time.~
+@10008  = ~A Bump with the Past: Jugglers, we are not. 
+
+When we reached the estate Keldorn identified, I suggested that Keldorn and I pose as entertainers to distract the major domo while our thief searched the premises. Keldorn decided that posing as jugglers would be a good idea. Massive destruction ensued. Keldorn assures me that the items we broke were replicas rather than the priceless artifacts the major domo claimed they were. In any event, the ruse worked and we were able to obtain documents linking Keldorn's former friend Vakola to an operation that smuggles unlicensed mages out of Athkatla.~
+@10009  = ~A Bump with the Past: Keldorn's Old Friend.
+
+At last, the mysterious 'V' is revealed! Keldorn explained that they were friends in the Order, but that Vakola was expelled in the midst of a scandal, though Keldorn is vague about the details. Whatever their past deeds, Vakola and his lover Zasheida are now attempting to help unlicensed mages escape Athkatla if they are detected but not immediately apprehended. They also procure study materials to help these illegal mages train. Keldorn is reluctant to go to the authorities until we are certain of Vakola's whereabouts.~
+@10010  = ~A Bump with the Past: Keldorn's Old Friend. 
+
+At last, we have met Vakola, Keldorn's one-time friend. Vakola blames Keldorn bitterly for a past betrayal and has threatened him with retribution. Keldorn wants to pursue Vakola, to find him wherever he is, but I do not feel the risk is justified. If Vakola comes looking for trouble, he'll find it, but there is no need for us to seek him out to inflict it upon him.~
+@10011  = ~A Bump with the Past: Keldorn's Old Friend. 
+
+At last, we have met Vakola, Keldorn's one-time friend. Vakola blames Keldorn bitterly for a past betrayal and has threatened him with retribution. Keldorn wants to find him before Vakola finds us. He thinks that Vakola lives in the Slums somewhere, and suggested that we find an artist who can make a sketch of Vakola to show to merchants and beggars in the area. He tells me that artists can often be found in the taverns of the Bridge District, the Five Flagons and Delosar's.~
+@10012  = ~A Bump with the Past: Keldorn's Old Friend. 
+
+At last, we have met Vakola, Keldorn's one-time friend. Vakola blames Keldorn bitterly for a past betrayal and has threatened him with revenge. Keldorn wants to find him before Vakola finds us. He thinks that Vakola lives in the Slums somewhere, and has had Gavin make a sketch of Vakola to show to merchants and beggars in the area.~
+@10013  = ~A Bump with the Past: Keldorn's Old Friend. 
+
+We encountered Keldorn's old 'friend' Vakola at the Sea's Bounty. A fight threatened to erupt and I told Keldorn that I would not support him. After the battle, Keldorn told me that I was untrustworthy and then left. I doubt that I will ever see him again.~
+@10014  = ~A Bump with the Past: Keldorn's Old Friend. 
+
+We encountered Keldorn's old 'friend' Vakola at the Sea's Bounty. A fight threatened to erupt and I told Keldorn that I would not support him. After the battle, I was able to persuade Keldorn to rejoin the party.~
+@10015  = ~A Bump with the Past: Keldorn's Old Friend. 
+
+We encountered Keldorn's old 'friend' Vakola at the Sea's Bounty. A fight threatened to erupt and I told Keldorn that I would not support him. After the battle, Keldorn wished me well and went on his way. It is unlikely that I will see him again.~
+@10016  = ~A Bump with the Past: Keldorn's Old Friend. 
+
+We encountered Keldorn's old 'friend', Vakola, again in the Sea's Bounty. The man's bitterness brought him and his friends to attack us... and now he is dead.~
+@10017  = ~A Bump with the Past: Keldorn's Old Friend. 
+
+We met with Keldorn's old 'friend' Vakola at the Sea's Bounty. Keldorn wanted to bring him to justice for the crime of smuggling mages out of Athkatla. Vakola blamed Keldorn for his expulsion from the Most Noble Order of the Radiant Heart. A fight looked likely, but I was able to avert it by reminding them both that good deeds done for selfish reasons are still evil.~
+@10018  = ~A Bump with the Past: Unavoidable Violence. 
+
+Our attempts to avoid violence at the estate were unsuccessful. The major domo called the guards and we were forced to slay everyone in the house. Oddly enough, the major domo turned out to be an unlicensed mage.~
+@10019  = ~A Bump with the Past: An Opportunity Lost. 
+
+Zasheida left the Sea's Bounty before I was able to search her room. I will have to find some other way to access her quarters. Perhaps the innkeeper or the porter will be able to help.~
+@10020  = ~A Bump with the Past: Alone at Last. 
+
+With Zasheida gone, I am free to search her room at leisure. There must be some kind of evidence stashed away somewhere.~
+@10021  = ~A Bump with the Past~
+
+
+/* epilogues */
+@99999 = ~For many years, Keldorn Firecam journeyed throughout Faerûn at the side of his beloved <CHARNAME>, serving the Order and doing Torm's work. They were last seen in the Small Teeth Mountains, when Amn was besieged by giants. Together with a handful of knights, they held a strategic pass until the main Amnish force could arrive. Some stories say they died there, together in battle; others insist that the hand of Torm came down and took them up to fight at his right hand; still others report that they travel still, seeking evils to combat in distant lands.~ 
+@99998 = ~After he parted ways with <CHARNAME>, Keldorn journeyed throughout Faerûn, serving the Order and doing Torm's work. He met his end years later, when Amn was besieged by giants. In his 60th winter, Keldorn and five knights held a strategic pass until the main Amnish force could arrive. He won the day, but his wounds were severe and the old paladin fell on the battlefield. As his knights watched, the hand of Torm descended upon the scene, and when it departed, Keldorn was gone. From that day, visions of the True God were accompanied by the stalwart ghostly form of Keldorn at his right hand.~ 

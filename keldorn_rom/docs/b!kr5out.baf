@@ -1,0 +1,22 @@
+
+// b!kr5out.baf - Gets Keldorn and the PC back to the Pocket Plane
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1) 
+        Wait(1) 
+        FadeToColor([20.0],0) 
+        Wait(1) 
+        ActionOverride("b!krlboy",DestroySelf()) 
+        ActionOverride("Keldorn",MoveBetweenAreas("AR4500",[1944.1297],0)) 
+        LeaveAreaLUAPanic("AR4500","",[2006.1295],0) 
+        LeaveAreaLUA("AR4500","",[1879.1331],8) 
+        MultiPlayerSync() 
+        Wait(1) 
+        FadeFromColor([20.0],0) 
+        MoveViewObject(Myself,INSTANT) 
+        Wait(1) 
+        EndCutSceneMode() 
+END 

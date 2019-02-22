@@ -1,0 +1,25 @@
+
+// b!vakols.baf - Vakola's override script 
+
+IF 
+    Global("B!KelQuest","GLOBAL",17) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KelQuest","GLOBAL",18) 
+        StartDialogueNoSet("Keldorn") 
+END 
+
+IF 
+    Global("B!KelQuest","GLOBAL",22) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KelQuest","GLOBAL",23) 
+        StartDialogueNoSet("Keldorn") 
+END 
+
+IF 
+    Global("B!KelQuest","GLOBAL",24) 
+THEN 
+    RESPONSE #100 
+        StartDialogueNoSet("Keldorn") 
+END 

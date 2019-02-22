@@ -1,0 +1,808 @@
+/* berelinde's Keldorn Romance */
+
+
+BACKUP ~keldorn_rom/backup~ 
+AUTHOR ~http://gibberlings3.net/forums/~ // berelinde
+
+VERSION ~4~ //180829
+
+README ~keldorn_rom/docs/readme-keldorn_rom.txt~ 
+
+AUTO_TRA ~keldorn_rom/tra/%s~
+
+ALWAYS
+  ACTION_IF (GAME_IS ~eet~) BEGIN
+    OUTER_SET bg2_chapter = 12
+  END ELSE BEGIN
+    OUTER_SET bg2_chapter = 0
+  END
+  OUTER_FOR (i=1; i<=10; i=i+1) BEGIN
+    OUTER_SET bg2_chapter = bg2_chapter + 1
+    OUTER_SPRINT name_source ~bg2_chapter_%i%~
+    OUTER_SET EVAL ~%name_source%~ = bg2_chapter
+  END
+
+
+/* flipp his coordinates for BGII:EE, EET and for "Sensible entry points" (flipped area Order of the Radiant Heart) from Tweak Pack */
+ACTION_IF NOT ((MOD_IS_INSTALLED ~BG2_TWEAKS/SETUP-BG2_TWEAKS.TP2~ ~3220~) OR
+                   (FILE_EXISTS_IN_GAME ~oh6000.are~)) THEN BEGIN
+  OUTER_SPRINT ~x-y-face~ ~1724,501,2~
+END
+
+ACTION_IF ((MOD_IS_INSTALLED ~BG2_TWEAKS/SETUP-BG2_TWEAKS.TP2~ ~3220~) OR
+                   (FILE_EXISTS_IN_GAME ~oh6000.are~)) THEN BEGIN
+  OUTER_SPRINT ~x-y-face~ ~644,501,0~
+END
+
+
+/* all following actions are only processed ONCE for the whole mod, independent of un- and reinstalling of single components */
+
+ACTION_IF !FILE_EXISTS ~keldorn_rom\backup/keldornromreinstall.mrk~ BEGIN
+
+
+ACTION_DEFINE_ARRAY fl#noconvert BEGIN setup END
+
+ACTION_DEFINE_ARRAY fl#reload BEGIN game END
+
+   LAF HANDLE_CHARSETS
+    INT_VAR
+      infer_charset = 1
+    STR_VAR
+      tra_path = EVAL ~keldorn_rom\Tra~
+      noconvert_array = fl#noconvert
+      reload_array = fl#reload
+  END
+
+
+
+COPY ~keldorn_rom\lib/component.xx~ ~keldorn_rom\backup/keldornromreinstall.mrk~
+
+END //keldornromreinstall.mrk
+
+
+    //TRAs declared in LANGUAGE must be reloaded
+  LOAD_TRA ~keldorn_rom\tra/%LANGUAGE%/game.tra~
+  LOAD_TRA ~keldorn_rom\tra/%LANGUAGE%/setup.tra~
+
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
+  LOAD_TRA ~keldorn_rom\tra/%LANGUAGE%/game_ee.tra~
+END
+
+
+END //ALWAYS
+
+
+
+LANGUAGE ~English~ ~english~ ~keldorn_rom/tra/english/setup.tra~ 
+
+BEGIN @50000 
+REQUIRE_PREDICATE ENGINE_IS ~tob bg2ee~ @50001 
+
+APPEND ~STATE.IDS~
+  ~0x80101FEF CD_STATE_NOTVALID~
+  UNLESS ~CD_STATE_NOTVALID~ 
+
+COMPILE ~keldorn_rom/lib/keldorj_fix.d~ 
+
+COPY_EXISTING ~keldorj.dlg~ ~override~ 
+    DECOMPILE_DLG_TO_D 
+        REPLACE_TEXTUALLY ~SetGlobal("KeldornLeaves","GLOBAL",1)~  ~SetGlobal("KeldornLeave","GLOBAL",1)~ 
+    COMPILE_D_TO_DLG 
+    BUT_ONLY_IF_IT_CHANGES 
+    
+INCLUDE ~keldorn_rom/lib/b!ids.tph~
+INCLUDE ~keldorn_rom/lib/b!times.tph~ 
+
+APPEND ~ITEMDIAL.2da~ 
+~b!kelmug    5689  b!kelmug~
+UNLESS ~b!kelmug~
+
+APPEND ~ITEMDIAL.2da~ 
+~b!zajour    5689  b!zajour~
+UNLESS ~b!zajour~
+
+APPEND ~ITEMDIAL.2da~ 
+~b!zakey    5689  b!zakey~
+UNLESS ~b!zakey~ 
+
+
+
+ADD_JOURNAL TITLE (@10021) @10000 @10001 @10002 @10003 @10004 @10005 @10006 @10007 @10008 @10009 @10010 @10011 @10012 @10013 @10014 @10015 @10016 @10017 @10018 @10019 @10020  USING ~keldorn_rom\tra/%LANGUAGE%/game.tra~
+
+/* Music */ 
+
+COPY ~keldorn_rom/audio~ ~override~ 
+
+/* Creatures */ 
+
+COPY ~keldorn_rom/creatures/b!kbutlr.cre~ ~override~ 
+    SAY NAME1 @0 
+    SAY NAME2 @0 
+    SAY INITIAL_MEETING @1
+    SAY DIALOGUE_HOSTILE @2 
+    SAY MORALE @3 
+    SAY BATTLE_CRY2 @2 
+    SAY DAMAGE @4 
+    SAY DYING @5 
+    SAY SELECT_COMMON1 @1 
+    WRITE_ASCII 0x280 ~b!kbutlr~ #32   // dv 
+    
+COPY ~keldorn_rom/creatures/b!kbutlr.cre~ ~override/b!kbtlr2.cre~ 
+    SAY NAME1 @0 
+    SAY NAME2 @0 
+    SAY INITIAL_MEETING @1
+    SAY DIALOGUE_HOSTILE @2 
+    SAY MORALE @3 
+    SAY BATTLE_CRY2 @2 
+    SAY DAMAGE @4 
+    SAY DYING @5 
+    SAY SELECT_COMMON1 @1
+    WRITE_ASCII 0x280 ~b!kbtlr2~ #32   // dv 
+    ADD_CRE_ITEM ~rndtre05~ #0 #0 #0 ~NONE~ ~INV12~ 
+
+COPY ~keldorn_rom/creatures/b!kelmsg.cre~ ~override~ 
+    SAY NAME1 @6 
+    SAY NAME2 @6 
+
+COPY ~keldorn_rom/creatures/b!kelart.cre~ ~override~ 
+    SAY NAME1 @7 
+    SAY NAME2 @7 
+    SAY INITIAL_MEETING @8
+    SAY DIALOGUE_HOSTILE @9 
+    SAY MORALE @9 
+    WRITE_LONG BATTLE_CRY2 (BNOT 0x0) 
+    SAY DAMAGE @10 
+    SAY DYING @11 
+    SAY SELECT_COMMON1 @12
+
+COPY ~keldorn_rom/creatures/b!kgard1.cre~ ~override/b!kgard1.cre~ 
+    SAY NAME1 @13 
+    SAY NAME2 @13 
+    SAY INITIAL_MEETING @14
+    SAY DIALOGUE_HOSTILE @15 
+    SAY MORALE @16 
+    SAY BATTLE_CRY1 @17 
+    SAY BATTLE_CRY2 @17 
+    SAY DAMAGE @18 
+    SAY DYING @19 
+    SAY SELECT_COMMON1 @14
+    WRITE_LONG SELECT_COMMON2 (BNOT 0x0) 
+    WRITE_LONG SELECT_COMMON3 (BNOT 0x0) 
+    WRITE_LONG SELECT_COMMON4 (BNOT 0x0) 
+    WRITE_ASCII 0x280 ~b!kgard1~ #32   // dv
+
+COPY ~keldorn_rom/creatures/b!kgard1.cre~ ~override/b!kgard2.cre~ 
+    SAY NAME1 @13 
+    SAY NAME2 @13 
+    SAY INITIAL_MEETING @14
+    SAY DIALOGUE_HOSTILE @15 
+    SAY MORALE @16 
+    SAY BATTLE_CRY1 @17 
+    SAY BATTLE_CRY2 @17 
+    SAY DAMAGE @18 
+    SAY DYING @19 
+    SAY SELECT_COMMON1 @14
+    WRITE_LONG SELECT_COMMON2 (BNOT 0x0) 
+    WRITE_LONG SELECT_COMMON3 (BNOT 0x0) 
+    WRITE_LONG SELECT_COMMON4 (BNOT 0x0) 
+    WRITE_ASCII 0x280 ~b!kgard2~ #32   // dv
+    
+COPY ~keldorn_rom/creatures/b!kgard1.cre~ ~override/b!kgard3.cre~ 
+    SAY NAME1 @13 
+    SAY NAME2 @13 
+    SAY INITIAL_MEETING @14
+    SAY DIALOGUE_HOSTILE @15 
+    SAY MORALE @16 
+    SAY BATTLE_CRY1 @17 
+    SAY BATTLE_CRY2 @17 
+    SAY DAMAGE @18 
+    SAY DYING @19 
+    SAY SELECT_COMMON1 @14
+    WRITE_LONG SELECT_COMMON2 (BNOT 0x0) 
+    WRITE_LONG SELECT_COMMON3 (BNOT 0x0) 
+    WRITE_LONG SELECT_COMMON4 (BNOT 0x0) 
+    WRITE_ASCII 0x280 ~b!kgard3~ #32   // dv
+    
+COPY ~keldorn_rom/creatures/b!kgard1.cre~ ~override/b!kgard4.cre~ 
+    SAY NAME1 @13 
+    SAY NAME2 @13 
+    SAY INITIAL_MEETING @14
+    SAY DIALOGUE_HOSTILE @15 
+    SAY MORALE @16 
+    SAY BATTLE_CRY1 @17 
+    SAY BATTLE_CRY2 @17 
+    SAY DAMAGE @18 
+    SAY DYING @19 
+    SAY SELECT_COMMON1 @14
+    WRITE_LONG SELECT_COMMON2 (BNOT 0x0) 
+    WRITE_LONG SELECT_COMMON3 (BNOT 0x0) 
+    WRITE_LONG SELECT_COMMON4 (BNOT 0x0) 
+    WRITE_ASCII 0x280 ~b!kgard4~ #32   // dv
+    
+COPY ~keldorn_rom/creatures/b!kland.cre~  ~override~ 
+    SAY NAME1 @20 
+    SAY NAME2 @20 
+    SAY INITIAL_MEETING @21
+    SAY DIALOGUE_HOSTILE @22 
+    SAY MORALE @23 
+    WRITE_LONG BATTLE_CRY2 (BNOT 0x0) 
+    SAY DAMAGE @24 
+    SAY DYING @25 
+    SAY SELECT_COMMON1 @21 
+    SAY SELECT_COMMON2 @26 
+
+COPY ~keldorn_rom/creatures/b!kmage1.cre~ ~override/b!kmage1.cre~ 
+    SAY NAME1 @27 
+    SAY NAME2 @27 
+    SAY INITIAL_MEETING @1
+    SAY DIALOGUE_HOSTILE @2 
+    SAY MORALE @3 
+    SAY BATTLE_CRY2 @2 
+    SAY DAMAGE @4 
+    SAY DYING @5 
+    SAY SELECT_COMMON1 @1 
+    WRITE_ASCII 0x280 ~b!kmage1~ #32   // dv
+
+COPY ~keldorn_rom/creatures/b!kmage1.cre~ ~override/b!kmage2.cre~ 
+    SAY NAME1 @27 
+    SAY NAME2 @27 
+    SAY INITIAL_MEETING @1
+    SAY DIALOGUE_HOSTILE @2 
+    SAY MORALE @3 
+    SAY BATTLE_CRY2 @2 
+    SAY DAMAGE @4 
+    SAY DYING @5 
+    SAY SELECT_COMMON1 @1 
+    WRITE_ASCII 0x280 ~b!kmage2~ #32   // dv
+
+COPY ~keldorn_rom/creatures/b!kmage1.cre~ ~override/b!kmage3.cre~ 
+    SAY NAME1 @27 
+    SAY NAME2 @27 
+    SAY INITIAL_MEETING @1
+    SAY DIALOGUE_HOSTILE @2 
+    SAY MORALE @3 
+    SAY BATTLE_CRY2 @2 
+    SAY DAMAGE @4 
+    SAY DYING @5 
+    SAY SELECT_COMMON1 @1 
+    WRITE_ASCII 0x280 ~b!kmage3~ #32   // dv 
+
+COPY ~keldorn_rom/creatures/b!kmage1.cre~ ~override/b!kmage4.cre~ 
+    SAY NAME1 @27 
+    SAY NAME2 @27 
+    SAY INITIAL_MEETING @1
+    SAY DIALOGUE_HOSTILE @2 
+    SAY MORALE @3 
+    SAY BATTLE_CRY2 @2 
+    SAY DAMAGE @4 
+    SAY DYING @5 
+    SAY SELECT_COMMON1 @1 
+    WRITE_ASCII 0x280 ~b!kmage4~ #32   // dv 
+
+COPY ~keldorn_rom/creatures/b!kthef1.cre~ ~override/b!kthef1.cre~ 
+    SAY NAME1 @13 
+    SAY NAME2 @13 
+    SAY INITIAL_MEETING @14
+    SAY DIALOGUE_HOSTILE @15 
+    SAY MORALE @16 
+    SAY BATTLE_CRY1 @17 
+    SAY BATTLE_CRY2 @17 
+    SAY DAMAGE @18 
+    SAY DYING @19 
+    SAY SELECT_COMMON1 @14
+    WRITE_LONG SELECT_COMMON2 (BNOT 0x0) 
+    WRITE_LONG SELECT_COMMON3 (BNOT 0x0) 
+    WRITE_LONG SELECT_COMMON4 (BNOT 0x0) 
+    WRITE_ASCII 0x280 ~b!kthef1~ #32   // dv 
+    ADD_CRE_ITEM ~leat04~ #0 #0 #0 ~IDENTIFIED~ ~ARMOR~ 
+    ADD_CRE_ITEM ~sw1h08~ #0 #0 #0 ~NONE~ ~WEAPON1~ EQUIP 
+    ADD_CRE_ITEM ~potn52~ #3 #0 #0 ~IDENTIFIED~ ~QITEM1~ 
+    ADD_CRE_ITEM ~rndtre03~ #0 #0 #0 ~NONE~ ~INV1~ 
+    ADD_CRE_ITEM ~rndtre03~ #0 #0 #0 ~NONE~ ~INV2~ 
+
+COPY ~keldorn_rom/creatures/b!kthef1.cre~ ~override/b!kthef2.cre~ 
+    SAY NAME1 @13 
+    SAY NAME2 @13 
+    SAY INITIAL_MEETING @14
+    SAY DIALOGUE_HOSTILE @15 
+    SAY MORALE @16 
+    SAY BATTLE_CRY1 @17 
+    SAY BATTLE_CRY2 @17 
+    SAY DAMAGE @18 
+    SAY DYING @19 
+    SAY SELECT_COMMON1 @14
+    WRITE_LONG SELECT_COMMON2 (BNOT 0x0) 
+    WRITE_LONG SELECT_COMMON3 (BNOT 0x0) 
+    WRITE_LONG SELECT_COMMON4 (BNOT 0x0) 
+    WRITE_ASCII 0x280 ~b!kthef2~ #32   // dv
+    ADD_CRE_ITEM ~leat04~ #0 #0 #0 ~IDENTIFIED~ ~ARMOR~ 
+    ADD_CRE_ITEM ~sw1h08~ #0 #0 #0 ~NONE~ ~WEAPON1~ EQUIP 
+    ADD_CRE_ITEM ~potn52~ #3 #0 #0 ~IDENTIFIED~ ~QITEM1~ 
+    ADD_CRE_ITEM ~rndtre03~ #0 #0 #0 ~NONE~ ~INV1~ 
+    ADD_CRE_ITEM ~rndtre03~ #0 #0 #0 ~NONE~ ~INV2~ 
+
+COPY ~keldorn_rom/creatures/b!porter.cre~ ~override~ 
+    SAY NAME1 @28 
+    SAY NAME2 @28 
+    SAY INITIAL_MEETING @29 
+    SAY DIALOGUE_HOSTILE @17 
+    WRITE_LONG MORALE (BNOT 0x0)  
+    WRITE_LONG BATTLE_CRY1 (BNOT 0x0) 
+    WRITE_LONG BATTLE_CRY2 (BNOT 0x0) 
+    SAY DAMAGE @18 
+    SAY DYING @19 
+    SAY SELECT_COMMON1 @29 
+    SAY SELECT_COMMON2 @30 
+    WRITE_BYTE 0x2D 17 // minor color
+    WRITE_BYTE 0x2E 18 // major color 
+    ADD_CRE_ITEM ~b!zakey~ #0 #0 #0 ~NONE~ ~INV12~ 
+
+COPY ~keldorn_rom/creatures/b!vakola.cre~ ~override~ 
+    SAY NAME1 @31 
+    SAY NAME2 @31 
+    SAY INITIAL_MEETING @32 
+    SAY DIALOGUE_HOSTILE @33 
+    WRITE_LONG MORALE (BNOT 0x0)  
+    SAY BATTLE_CRY1 @33 
+    SAY BATTLE_CRY2 @34
+    SAY DAMAGE @35 
+    SAY DYING @36 
+    SAY SELECT_COMMON1 @32 
+    WRITE_LONG SELECT_COMMON2 (BNOT 0x0) 
+    WRITE_LONG SELECT_COMMON3 (BNOT 0x0) 
+    WRITE_LONG SELECT_COMMON4 (BNOT 0x0) 
+    
+COPY ~keldorn_rom/creatures/b!zash.cre~   ~override~ 
+    SAY NAME1 @37 
+    SAY NAME2 @37 
+    WRITE_LONG INITIAL_MEETING (BNOT 0x0) 
+    SAY DIALOGUE_HOSTILE @38 
+    WRITE_LONG MORALE (BNOT 0x0)  
+    WRITE_LONG BATTLE_CRY1 (BNOT 0x0) 
+    WRITE_LONG BATTLE_CRY2 (BNOT 0x0) 
+    SAY DAMAGE @39 
+    SAY DYING @40 
+    SAY SELECT_COMMON1 @41
+    SAY SELECT_COMMON2 @41
+    SAY SELECT_COMMON3 @41
+    SAY SELECT_COMMON4 @41
+    ADD_CRE_ITEM ~rndtre05~ #0 #0 #0 ~NONE~ ~INV12~ 
+
+
+COPY ~keldorn_rom/creatures/b!mwjol.cre~   ~override~ 
+    SAY NAME1 @42 
+    SAY NAME2 @42 
+    ADD_CRE_ITEM ~plat01~ #0 #0 #0 ~NONE~ ~ARMOR~ 
+    ADD_CRE_ITEM ~ax1h01~ #0 #0 #0 ~NONE~ ~WEAPON1~ EQUIP
+    ADD_CRE_ITEM ~ax1h01~ #0 #0 #0 ~NONE~ ~SHIELD~ 
+
+/* Items */ 
+
+COPY ~keldorn_rom/items/eff~ ~override~ 
+COPY ~keldorn_rom/items/bam~ ~override~ 
+
+ACTION_IF GAME_IS ~bgt tob~ THEN BEGIN
+COPY ~keldorn_rom/items/descr_bam/cb!krng.bam~ ~override/cb!krng.bam~ 
+COPY ~keldorn_rom/items/descr_bam/cb!zaky.bam~ ~override/cb!zaky.bam~ 
+COPY ~keldorn_rom/items/descr_bam/cb!zscm.bam~ ~override/cb!zscm.bam~ 
+END
+
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
+COPY ~keldorn_rom/items/descr_bam/cb!krng.bmp~ ~override/cb!krng.bmp~ 
+COPY ~keldorn_rom/items/descr_bam/cb!zaky.bmp~ ~override/cb!zaky.bmp~ 
+COPY ~keldorn_rom/items/descr_bam/cb!zscm.bmp~ ~override/cb!zscm.bmp~ 
+END
+
+COPY ~keldorn_rom/items/b!kellet.itm~ ~override~ 
+    SAY NAME1 @43 
+    SAY NAME2 @43 
+    SAY DESC @44 
+    SAY UNIDENTIFIED_DESC @44 
+
+COPY ~keldorn_rom/items/b!kelmug.itm~ ~override~   // item is conversible!
+    SAY NAME1 @45 
+    SAY NAME2 @45 
+    SAY DESC @46 
+    SAY UNIDENTIFIED_DESC @46 
+
+COPY ~keldorn_rom/items/b!kmug.itm~ ~override~ 
+    SAY NAME1 @45 
+    SAY NAME2 @45 
+    SAY DESC @46 
+    SAY UNIDENTIFIED_DESC @46 
+
+COPY ~keldorn_rom/items/b!kring.itm~ ~override~ 
+    SAY NAME1 @47 
+    SAY NAME2 @47 
+    SAY DESC @48 
+    SAY UNIDENTIFIED_DESC @48 
+
+COPY ~keldorn_rom/items/b!halb.itm~ ~override~ 
+    SAY NAME1 @49 
+    SAY NAME2 @49 
+    SAY UNIDENTIFIED_DESC @50 
+    SAY DESC @51 
+
+COPY ~keldorn_rom/items/b!livry.itm~ ~override~ 
+    SAY NAME1 @52 
+    SAY NAME2 @52 
+    SAY DESC @53 
+    SAY UNIDENTIFIED_DESC @53 
+
+COPY ~keldorn_rom/items/b!shipch.itm~ ~override~ 
+    SAY NAME1 @54 
+    SAY NAME2 @54 
+    SAY DESC @55 
+    SAY UNIDENTIFIED_DESC @55 
+
+COPY ~keldorn_rom/items/b!zajour.itm~ ~override~   // item is conversible! 
+    SAY NAME1 @56 
+    SAY NAME2 @56 
+    SAY DESC @57 
+    SAY UNIDENTIFIED_DESC @57 
+
+COPY ~keldorn_rom/items/b!zakey.itm~ ~override~   // item is conversible! 
+    SAY NAME1 @58 
+    SAY NAME2 @58 
+    SAY DESC @59 
+    SAY UNIDENTIFIED_DESC @59 
+
+COPY ~keldorn_rom/items/b!zscim.itm~ ~override~ 
+    SAY NAME1 @60 
+    SAY NAME2 @60 
+    SAY UNIDENTIFIED_DESC @61 
+    SAY DESC @62 
+
+/* Dialogues and Scripts */ 
+
+PRINT  @50009 
+
+PRINT @50010 
+
+
+OUTER_SPRINT ~keldorntimer~ ~placeholder_value~ 
+OUTER_WHILE (!(IS_AN_INT ~keldorntimer~) OR (~keldorntimer~ > 0x5) OR (~keldorntimer~ < 0x1)) BEGIN
+  PRINT @50011
+  ACTION_READLN ~keldorntimer~
+END
+      ACTION_IF ("keldorntimer" = 1) THEN BEGIN
+      OUTER_SET KEL_TIME = 600
+      OUTER_SET KEL_TIME2 = 900 
+      PRINT @50012 
+      END
+      ACTION_IF ("keldorntimer" = 2) THEN BEGIN
+      OUTER_SET KEL_TIME = 1200
+      OUTER_SET KEL_TIME2 = 1800 
+      PRINT @50013 
+      END
+      ACTION_IF ("keldorntimer" = 3) THEN BEGIN
+      OUTER_SET KEL_TIME = 1800
+      OUTER_SET KEL_TIME2 = 2700
+      PRINT @50014 
+      END
+      ACTION_IF ("keldorntimer" = 4) THEN BEGIN
+      OUTER_SET KEL_TIME = 2700
+      OUTER_SET KEL_TIME2 = 3600 
+      PRINT @50015 
+      END
+      ACTION_IF ("keldorntimer" = 5) THEN BEGIN
+      OUTER_SET KEL_TIME = 3600
+      OUTER_SET KEL_TIME2 = 5400 
+      PRINT @50016
+      END
+
+
+    
+COMPILE EVALUATE_BUFFER ~keldorn_rom/dialogue/b!keldorn_p.d~ 
+COMPILE EVALUATE_BUFFER ~keldorn_rom/dialogue/b!timer_talks.d~ 
+COMPILE ~keldorn_rom/dialogue/b!zash.d~ 
+COMPILE ~keldorn_rom/dialogue/b!keldorn_quest.d~ 
+COMPILE ~keldorn_rom/dialogue/b!porter.d~ 
+COMPILE ~keldorn_rom/dialogue/b!zajour.d~ 
+COMPILE ~keldorn_rom/dialogue/b!zakey.d~ 
+COMPILE ~keldorn_rom/dialogue/b!romance_reactions.d~ 
+COMPILE ~keldorn_rom/dialogue/b!player1.d~ 
+COMPILE ~keldorn_rom/dialogue/b!kbutlr.d~ 
+COMPILE ~keldorn_rom/dialogue/b!vakola.d~ 
+COMPILE ~keldorn_rom/dialogue/b!kelart.d~ 
+COMPILE ~keldorn_rom/dialogue/b!kelmug.d~ 
+COMPILE ~keldorn_rom/dialogue/b!ar0400.d~ 
+COMPILE ~keldorn_rom/dialogue/b!kland.d~ 
+COMPILE ~keldorn_rom/dialogue/b!brega.d~ 
+COMPILE ~keldorn_rom/dialogue/b!banter.d~ 
+COMPILE ~keldorn_rom/dialogue/b!night.d~ 
+COMPILE EVALUATE_BUFFER ~keldorn_rom/dialogue/b!interjections.d~ 
+COMPILE ~keldorn_rom/dialogue/b!wounds.d~ 
+COMPILE EVALUATE_BUFFER ~keldorn_rom/dialogue/b!tob_timer_talks.d~ 
+COMPILE ~keldorn_rom/dialogue/b!tob_morning.d~ 
+COMPILE ~keldorn_rom/dialogue/b!tob_challenges.d~ 
+COMPILE ~keldorn_rom/dialogue/b!kr_finsol.d~ 
+COMPILE ~keldorn_rom/dialogue/b!master_wraith.d~ 
+
+COMPILE ~keldorn_rom/dialogue/b!flirt.d~ 
+COMPILE ~keldorn_rom/dialogue/b!tob_pid.d~ 
+
+COMPILE ~keldorn_rom/script/b!kelmsg.baf~   // override for Basil, delivers letter to Keldorn
+COMPILE ~keldorn_rom/script/b!zashs.baf~    // Zasheida's override script 
+COMPILE ~keldorn_rom/script/b!zashx.baf~    // Zasheida's combat script 
+COMPILE ~keldorn_rom/script/b!kguard.baf~   // Guard combat script 
+COMPILE ~keldorn_rom/script/b!kmage.baf~    // Mage combat script
+COMPILE ~keldorn_rom/script/b!kthief.baf~   // Thief combat script 
+COMPILE ~keldorn_rom/script/b!zash1.baf~    // Gets Zasheida and PC into her room 
+COMPILE ~keldorn_rom/script/b!zash2.baf~    // Zasheida goes downstairs for wine 
+COMPILE ~keldorn_rom/script/b!zash3.baf~    // Zasheida and the PC return to the common room 
+COMPILE ~keldorn_rom/script/b!zash4.baf~    // PC returned to the common room alone after insulting Zasheida 
+COMPILE ~keldorn_rom/script/b!zash5.baf~    // Cutscene sex with Zasheida 
+COMPILE ~keldorn_rom/script/b!zkey1.baf~    // Use the key to get into Zasheida's room 
+COMPILE ~keldorn_rom/script/b!jour1.baf~    // getting into hovel 
+COMPILE ~keldorn_rom/script/b!safe1.baf~    // gets party to the safe house 
+COMPILE ~keldorn_rom/script/b!kbutlr.baf~   // butler's override 
+COMPILE ~keldorn_rom/script/b!safe2.baf~    // moves the PC and the butler to the basement 
+COMPILE ~keldorn_rom/script/b!safe3.baf~    // initiate safe house combat 
+COMPILE ~keldorn_rom/script/b!safe4.baf~    // Gets party out of safe house after juggling fiasco 
+COMPILE ~keldorn_rom/script/b!safe5.baf~    // moves the PC and the butler from b!celr to b!safe 
+COMPILE ~keldorn_rom/script/b!safe6.baf~    // Cutscene sex with the safe house butler 
+COMPILE ~keldorn_rom/script/b!vakols.baf~   // Vakola's override script 
+COMPILE ~keldorn_rom/script/b!vakolx.baf~   // Vakola's combat script 
+COMPILE ~keldorn_rom/script/b!bord1.baf~    // moves party to the boarding house 
+COMPILE ~keldorn_rom/script/b!kelq1.baf~    // moves the party outside for the quest resolution 
+COMPILE ~keldorn_rom/script/b!krftb.baf~    // flirt-induced fade to black 
+COMPILE ~keldorn_rom/script/b!kelmw1.baf~   // master wraith summons Jolly 
+
+EXTEND_TOP    ~keldorn.bcs~ ~keldorn_rom/script/b!keldorn_quest.baf~      // Keldorn's quest-related script 
+//EXTEND_TOP    ~keldorn.bcs~ ~keldorn_rom/script/b!keldorn_rom.baf~        // romance-related bcs additions 
+//    EVALUATE_BUFFER
+//EXTEND_TOP    ~keldord.bcs~ ~keldorn_rom/script/b!keldorn_rom_d.baf~ //EVALUATE_BUFFER      // Keldorn's night talks 
+EXTEND_BOTTOM ~baldur.bcs~  ~keldorn_rom/script/b!baldur.baf~             // Summons Keldorn when his timer expires 
+EXTEND_TOP    ~ar0300.bcs~  ~keldorn_rom/script/b!ar0300.baf~             // Spawns Zasheida 
+EXTEND_TOP    ~ar0313.bcs~  ~keldorn_rom/script/b!ar0313.baf~             // Spawns the porter for Keldorn's quest 
+EXTEND_TOP    ~ar0513.bcs~  ~keldorn_rom/script/b!ar0513.baf~             // Spawns the artist in Delosar's 
+EXTEND_TOP    ~ar1003.bcs~  ~keldorn_rom/script/b!ar1003.baf~             // Respawns Keldorn's Family 
+EXTEND_TOP    ~anomen.bcs~  ~keldorn_rom/script/b!anomen.baf~             // Anomen's romance reactions 
+EXTEND_TOP    ~aerie.bcs~   ~keldorn_rom/script/b!aerie.baf~              // Aerie's romance reactions 
+EXTEND_TOP    ~edwin.bcs~   ~keldorn_rom/script/b!edwin.baf~              // Edwin's romance-related banter 
+EXTEND_TOP    ~imoen.bcs~   ~keldorn_rom/script/b!imoen.baf~              // Imoen's romance comments 
+EXTEND_TOP    ~jaheira.bcs~ ~keldorn_rom/script/b!jaheira.baf~            // Jaheira's romance reactions 
+EXTEND_TOP    ~minsc.bcs~   ~keldorn_rom/script/b!minsc.baf~              // Minsc's romance comment 
+EXTEND_TOP    ~viconia.bcs~ ~keldorn_rom/script/b!viconia.baf~            // Viconia's romance reactions 
+EXTEND_BOTTOM ~cut218g.bcs~ ~keldorn_rom/script/b!kelmw2.baf~             // changes Jolly into another wraith
+EXTEND_BOTTOM ~keld25.bcs~  ~keldorn_rom/script/b!rom_eb.baf~             // RE stuff, more or less inconsequential
+
+/* Epilogues */ 
+
+COPY_EXISTING ~ar6200.bcs~ ~override~ 
+    DECOMPILE_BCS_TO_BAF
+    REPLACE_TEXTUALLY ~Global("KeldornBio","GLOBAL",0)~ 
+    ~Global("KeldornBio","GLOBAL",0)
+    !Global("B!KeldornRA","GLOBAL",2)
+    !Global("B!KeldornRA","GLOBAL",3)~ 
+    COMPILE_BAF_TO_BCS 
+    
+COPY ~keldorn_rom/2da/b!kr_ep1.2da~ ~override~ 
+    REPLACE ~99999~ @99999 
+
+COPY ~keldorn_rom/2da/b!kr_ep2.2da~ ~override~ 
+    REPLACE ~99998~ @99998 
+    
+EXTEND_TOP ~ar6200.bcs~ ~keldorn_rom/script/b!ar6200.baf~ 
+
+/* A Suitor's Nightmare */ 
+
+EXTEND_BOTTOM ~ar4500.bcs~    ~keldorn_rom/docs/b!ar4500out.baf~ 
+EXTEND_BOTTOM ~baldur25.bcs~  ~keldorn_rom/docs/b!baldur25out.baf~ 
+
+COMPILE ~keldorn_rom/docs/b!kr_outtakes.d~ 
+COMPILE ~keldorn_rom/docs/b!kr1out.baf~ 
+COMPILE ~keldorn_rom/docs/b!kr2out.baf~ 
+COMPILE ~keldorn_rom/docs/b!kr3out.baf~ 
+COMPILE ~keldorn_rom/docs/b!kr4out.baf~ 
+COMPILE ~keldorn_rom/docs/b!kr5out.baf~ 
+
+COPY ~keldorn_rom/docs/b!leona.cre~   ~override~ 
+    SAY NAME1 @63 
+    SAY NAME2 @63 
+    ADD_CRE_ITEM ~plat01~ #0 #0 #0 ~NONE~ ~ARMOR~ 
+
+COPY ~keldorn_rom/docs/b!krlboy.cre~   ~override~ 
+    SAY NAME1 @64 
+    SAY NAME2 @64 
+
+/* Areas */ 
+
+COPY ~keldorn_rom/areas/allgames~ ~override~ 
+
+ACTION_IF GAME_IS ~bgt tob~ THEN BEGIN
+COPY ~keldorn_rom/areas/b!inn1.mos~ ~override/b!inn1.mos~ 
+END
+
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
+COPY ~keldorn_rom/areas/b!inn1_ee.mos~ ~override/b!inn1.mos~ 
+COPY_EXISTING ~ar0041.mos~ ~override\b!aley.mos~
+COPY_EXISTING ~ar0318.mos~ ~override\b!hovl.mos~
+COPY_EXISTING ~ar0332.mos~ ~override\b!bord.mos~
+COPY_EXISTING ~ar0531.mos~ ~override\b!celr.mos~
+COPY_EXISTING ~ar0905.mos~ ~override\b!safe.mos~
+END
+
+COPY_EXISTING ~b!inn1.are~ ~override~    // Zasheida's room
+    PATCH_IF SOURCE_SIZE > 0x28f BEGIN
+        READ_ASCII 0x94 ~rsc~                //Area script
+        PATCH_IF (~%rsc%~ STRING_EQUAL_CASE ~none~ = 1) OR (~%rsc%~ STRING_EQUAL ~~ = 1) BEGIN
+          WRITE_ASCII 0x94 ~b!inn1~ #8
+        END
+      END
+    BUT_ONLY
+    EXTEND_TOP ~b!inn1.bcs~  ~keldorn_rom/script/b!inn1.baf~         // Zasheida returns if the PC found her journal 
+
+COPY_EXISTING ~b!hovl.are~ ~override~    // Holding area
+    PATCH_IF SOURCE_SIZE > 0x28f BEGIN
+        READ_ASCII 0x94 ~rsc~                //Area script
+        PATCH_IF (~%rsc%~ STRING_EQUAL_CASE ~none~ = 1) OR (~%rsc%~ STRING_EQUAL ~~ = 1) BEGIN
+          WRITE_ASCII 0x94 ~b!hovl~ #8
+        END
+      END
+    BUT_ONLY
+    EXTEND_TOP ~b!hovl.bcs~  ~keldorn_rom/script/b!hovl.baf~         // Cues Keldorn's dialogues inside the hovel  
+
+COPY_EXISTING ~b!safe.are~ ~override~    // Safe house
+    PATCH_IF SOURCE_SIZE > 0x28f BEGIN
+        READ_ASCII 0x94 ~rsc~                //Area script
+        PATCH_IF (~%rsc%~ STRING_EQUAL_CASE ~none~ = 1) OR (~%rsc%~ STRING_EQUAL ~~ = 1) BEGIN
+          WRITE_ASCII 0x94 ~b!safe~ #8
+        END
+      END
+    BUT_ONLY
+    EXTEND_TOP ~b!safe.bcs~  ~keldorn_rom/script/b!safe.baf~         // Spawns safe house butler  
+
+COPY_EXISTING ~b!bord.are~ ~override~    // Boarding house 
+    PATCH_IF SOURCE_SIZE > 0x28f BEGIN
+        READ_ASCII 0x94 ~rsc~                //Area script
+        PATCH_IF (~%rsc%~ STRING_EQUAL_CASE ~none~ = 1) OR (~%rsc%~ STRING_EQUAL ~~ = 1) BEGIN
+          WRITE_ASCII 0x94 ~b!bord~ #8
+        END
+      END
+    BUT_ONLY
+    EXTEND_TOP ~b!bord.bcs~  ~keldorn_rom/script/b!bord.baf~         // Spawns landlord  
+
+/* BEGIN ~Add Keldorn's romance theme to songlist.2da
+(recommended for smaller installations - music will be more audible)~ 
+REQUIRE_COMPONENT ~setup-keldorn_rom.tp2~ ~0~ ~This component requires berelinde's Keldorn Romance~ 
+FORCED_SUBCOMPONENT ~Music~ 
+    MKDIR ~music/mxbkel~ 
+    COPY ~keldorn_rom/song/mxbkel/mxbkela.acm~ ~music/mxbkel~ 
+    COPY ~keldorn_rom/song/mxbkel.mus~  ~music~ 
+    MKDIR ~music/blank~ 
+    COPY ~keldorn_rom/song/blank/blanka.acm~ ~music/blank~ 
+    COPY ~keldorn_rom/song/b_blank.mus~ ~music~ 
+    SET_2DA_ENTRY 0 2 3 ~b_blank.mus~
+    ADD_MUSIC  ~Keldorn~    ~music/mxbkel.mus~ 
+    
+    EXTEND_TOP ~keldorn.bcs~ ~keldorn_rom/script/with_music/b!keldorn_rom.baf~ 
+        EVALUATE_BUFFER 
+    EXTEND_TOP ~keldord.bcs~ ~keldorn_rom/script/with_music/b!keldorn_rom_d.baf~ 
+      EVALUATE_BUFFER 
+    COPY_EXISTING ~keldorn.bcs~ ~override~ 
+        DECOMPILE_BCS_TO_BAF 
+            REPLACE_TEXTUALLY 98765 ~%Keldorn%~ 
+        COMPILE_BAF_TO_BCS 
+        
+    COPY_EXISTING ~keldord.bcs~ ~override~ 
+        DECOMPILE_BCS_TO_BAF 
+            REPLACE_TEXTUALLY 98765 ~%Keldorn%~ 
+        COMPILE_BAF_TO_BCS 
+*/ 
+
+/* 
+BEGIN ~Do not add Keldorn's romance theme to songlist.2da
+(suggested for larger installations - music will be softer)~ 
+REQUIRE_COMPONENT ~setup-keldorn_rom.tp2~ ~0~ ~This component requires berelinde's Keldorn Romance~ 
+FORCED_SUBCOMPONENT ~Music~ */ 
+
+/* Music */ 
+    MKDIR ~music/blank~ 
+    COPY ~keldorn_rom/song/b_blank.mus~ ~music/blank~ 
+    SET_2DA_ENTRY 0 2 3 ~b_blank.mus~ 
+    
+    EXTEND_TOP ~keldorn.bcs~ ~keldorn_rom/script/b!keldorn_rom.baf~ 
+        EVALUATE_BUFFER 
+    EXTEND_TOP ~keldord.bcs~ ~keldorn_rom/script/b!keldorn_rom_d.baf~ 
+      EVALUATE_BUFFER 
+    EXTEND_TOP ~keld25.bcs~ ~keldorn_rom/script/b!keldorn_rom_tob.baf~ 
+        EVALUATE_BUFFER 
+
+/* externalized Multi-romance detection */
+    EXTEND_TOP ~keldorn.bcs~ ~keldorn_rom/script/b!keldorn_rom_multirom.baf~ 
+        EVALUATE_BUFFER 
+
+
+/* Fix for Anomen Romance Variable */
+
+/* sets variable Global("B!KeldornIgnoreAnomenRom","GLOBAL",1) which will lead to AnomenRomanceActive = 2 being ignored (between Anomen "LoveTalk" >27 and >31 ) */
+
+COMPILE ~keldorn_rom/dialogue/anomen_romancefix.d~ 
+EXTEND_TOP    ~anomen.bcs~  ~keldorn_rom/script/b!anomen_romfix.baf~ 
+
+
+
+
+BEGIN @50002 
+REQUIRE_COMPONENT ~setup-keldorn_rom.tp2~ ~0~ @50003 
+FORCED_SUBCOMPONENT @50004
+    EXTEND_BOTTOM ~baldur.bcs~ ~keldorn_rom/script/b!lgng.baf~ 
+    
+BEGIN  @50005
+REQUIRE_COMPONENT ~setup-keldorn_rom.tp2~ ~0~ @50003 
+FORCED_SUBCOMPONENT @50004 
+    EXTEND_BOTTOM ~baldur.bcs~ ~keldorn_rom/script/b!lgngcg.baf~ 
+    
+BEGIN  @50006
+REQUIRE_COMPONENT ~setup-keldorn_rom.tp2~ ~0~ @50003 
+FORCED_SUBCOMPONENT @50004 
+    EXTEND_BOTTOM ~baldur.bcs~ ~keldorn_rom/script/b!lgngcgln.baf~ 
+    
+BEGIN  @50007
+REQUIRE_COMPONENT ~setup-keldorn_rom.tp2~ ~0~ @50003 
+FORCED_SUBCOMPONENT @50004 
+    EXTEND_BOTTOM ~baldur.bcs~ ~keldorn_rom/script/b!lgngcglntn.baf~ 
+    
+/*
+BEGIN ~Party members comment on Keldorn's relationship with the PC~ 
+REQUIRE_COMPONENT ~setup-keldorn_rom.tp2~ ~0~ @50003 
+FORCED_SUBCOMPONENT ~NPC Comments~ 
+    COMPILE ~keldorn_rom/dialogue/b!banter.d~ 
+
+BEGIN ~Party members do not comment on Keldorn's relationship with the PC~ 
+REQUIRE_COMPONENT ~setup-keldorn_rom.tp2~ ~0~ @50003 
+FORCED_SUBCOMPONENT ~NPC Comments~ 
+    COMPILE ~keldorn_rom/dialogue/b!banter.d~ 
+    EXTEND_TOP ~keldorn.bcs~ ~keldorn_rom/script/b!no_npc_comments.baf~ 
+*/
+
+BEGIN  @50008
+REQUIRE_COMPONENT ~setup-keldorn_rom.tp2~ ~0~ @50003 
+      COPY ~keldorn_rom/bmp/senka_l.bmp~  ~override/nkeldorl.bmp~
+  ACTION_IF GAME_IS ~bgt tob~ THEN BEGIN
+      COPY ~keldorn_rom/bmp/senka_m.bmp~  ~override/nkeldorm.bmp~
+      COPY ~keldorn_rom/bmp/senka_s.bmp~  ~override/nkeldors.bmp~
+  END
+/*      COPY ~keldorn_rom/bmp/senka_l.bmp~  ~portraits/nkeldorl.bmp~
+      COPY ~keldorn_rom/bmp/senka_m.bmp~  ~portraits/nkeldorm.bmp~
+      COPY ~keldorn_rom/bmp/senka_s.bmp~  ~portraits/nkeldors.bmp~
+*/
+
+
+  ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
+      COPY ~keldorn_rom/bmp/senka_m_ee.bmp~  ~override/nkeldorm.bmp~
+      COPY ~keldorn_rom/bmp/senka_s_ee.bmp~  ~override/nkeldors.bmp~
+  END
+
+
+/*
+BEGIN ~Add Keldorn's romance theme to songlist.2da 
+(recommended only for small installations)~ 
+REQUIRE_COMPONENT ~setup-keldorn_rom.tp2~ ~0~ @50003 
+
+COPY ~keldorn_rom/song~ ~music~ 
+SET_2DA_ENTRY 0 2 3 ~b_blank.mus~
+ADD_MUSIC  ~kel_rom~    ~music/mxbkel.mus~
+
+COPY_EXISTING ~keldorn.bcs~ ~override~ 
+    DECOMPILE_BCS_TO_BAF 
+        REPLACE_TEXTUALLY ~PlaySound("bkelsong")~ ~PlaySong(13579)~ 
+    COMPILE_BAF_TO_BCS 
+
+COPY_EXISTING ~keldord.bcs~ ~override~ 
+    DECOMPILE_BCS_TO_BAF 
+        REPLACE_TEXTUALLY ~PlaySound("bkelsong")~ ~PlaySong(13579)~ 
+    COMPILE_BAF_TO_BCS 
+
+COPY_EXISTING ~keldorn.bcs~ ~override~ 
+    DECOMPILE_BCS_TO_BAF 
+        REPLACE_TEXTUALLY ~13579~ ~%mxbkel%~ 
+    COMPILE_BAF_TO_BCS 
+
+COPY_EXISTING ~keldord.bcs~ ~override~ 
+    DECOMPILE_BCS_TO_BAF 
+        REPLACE_TEXTUALLY ~13579~ ~%mxbkel%~ 
+    COMPILE_BAF_TO_BCS 
+*/ 

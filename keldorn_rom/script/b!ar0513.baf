@@ -1,0 +1,11 @@
+
+// b!ar0513.baf - Spawns the artist in Delosar's 
+
+IF 
+    Global("B!KelArtSpawn","AR0513",0) 
+THEN 
+    RESPONSE #100 
+        CreateCreature("b!kelart",[721.221],0) 
+        SetGlobal("B!KelArtSpawn","AR0513",1) 
+        Continue() 
+END 

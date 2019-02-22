@@ -1,0 +1,33 @@
+/* For legacy reasons, Anomen is not considered here but in the dialogue directly */
+
+/* I decided Keldorn will ignore the Yoshimo romance - jastey */
+
+IF
+	Global("B!Kel_MultiRomances","GLOBAL",0) 
+	Global("B!KelLT","GLOBAL",67) 
+	Global("B!Kel_OtherRomance","GLOBAL",0) 
+   OR(16)
+	Global("rh#AdrianRomanceActive","GLOBAL",2)	//Adrian
+	Global("C#AjantisRomanceActive","GLOBAL",2) 	//Ajantis BGII
+	Global("ADAngelRomanceActive","GLOBAL",2)	//Angelo
+	Global("c-AranRomanceActive","GLOBAL",2) 	//Aran Whitehand
+	Global("ChloeRomanceActiveCR","GLOBAL",2) 	//Chloe
+	Global("EdwinRomanceActive","GLOBAL",2) 	//Edwin Romance
+	Global("B!GavRA","GLOBAL",2) 			//Gavin BGII
+	Global("ImoenRomanceActive","GLOBAL",2) 	//Imoen Romance
+	Global("J#KelseyRomanceActive","GLOBAL",2) 	//Kelsey
+	Global("SarahRomanceActive","GLOBAL",2) 	//Sarah
+	Global("C0SireneRomanceActive","GLOBAL",2)	//Sirene BGII
+	Global("TsujathaRomanceActive","GLOBAL",2)	//Tsujatha
+	Global("H#ValygarRomanceActive","GLOBAL",2)	//Valygar (Corthala Romantique)
+	Global("L#2VerrRomanceActive","GLOBAL",2)	//Verr'Sza BGII
+	GlobalGT("SolaTalk","GLOBAL",14) 		//Weimer's Solaufein
+	Global("O#XanRomanceActive","GLOBAL",2)		//Xan BGII
+/* BGII:EE */
+	Global("DornRomanceActive","GLOBAL",2)
+	Global("HexxatRomanceActive","GLOBAL",2)
+	Global("RasaadRomanceActive","GLOBAL",2)
+THEN 
+    RESPONSE #100 
+	SetGlobal("B!Kel_OtherRomance","GLOBAL",1) 
+END

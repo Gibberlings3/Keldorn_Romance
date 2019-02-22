@@ -1,0 +1,12 @@
+
+// b!kelmw2.baf - EXTEND_BOTTOM cut218g.bcs - changes Jolly into another wraith
+
+IF
+  True()
+THEN
+  RESPONSE #100
+    CutSceneId("b!mwjol")  // 
+    CreateVisualEffectObject("SPFLESHS",Myself)
+    Wait(1)
+    ChangeAnimation("HGWRA02")
+END

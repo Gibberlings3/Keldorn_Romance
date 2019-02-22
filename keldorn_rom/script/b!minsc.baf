@@ -1,0 +1,33 @@
+
+// b!minsc.baf - Minsc's romance comment
+
+IF 
+    InParty(Myself) 
+    InParty("Keldorn") 
+    PartyRested() 
+    GlobalGT("B!KelLT","GLOBAL",8) 
+    GlobalLT("B!KelLT","GLOBAL",26) 
+    Global("B!KelRomMin1","GLOBAL",0) 
+    Global("B!KeldornRA","GLOBAL",1) 
+//    !Global("B!NoNPCComments","GLOBAL",1) 
+    CombatCounter(0) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck("Keldorn",CD_STATE_NOTVALID) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KelRomMin1","GLOBAL",1) 
+END 
+
+IF 
+    InParty(Myself) 
+    InParty("Keldorn") 
+    Global("B!KelRomMin1","GLOBAL",1) 
+    Global("B!KeldornRA","GLOBAL",1) 
+//    !Global("B!NoNPCComments","GLOBAL",1) 
+    CombatCounter(0) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck("Keldorn",CD_STATE_NOTVALID) 
+THEN 
+    RESPONSE #100 
+        StartDialogueNoSet("Keldorn")  
+END 

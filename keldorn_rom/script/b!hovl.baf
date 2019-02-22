@@ -1,0 +1,25 @@
+
+// b!hovl.baf - Cues Keldorn's dialogues inside the hovel 
+
+IF 
+    Global("B!KelQuest","GLOBAL",9) 
+    Exists("Keldorn") 
+    !StateCheck("Keldorn",CD_STATE_NOTVALID) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KelQuest","GLOBAL",10) 
+        ActionOverride("Keldorn",StartDialogueNoSet(Player1) 
+END 
+
+IF 
+    Global("B!KelQuest","GLOBAL",11) 
+    Exists("Keldorn") 
+    PartyHasItem("b!livry") 
+    !StateCheck("Keldorn",CD_STATE_NOTVALID) 
+THEN 
+    RESPONSE #100 
+        AddexperienceParty(6000)
+        SetGlobal("B!KelQuest","GLOBAL",12) 
+        ActionOverride("Keldorn",StartDialogueNoSet(Player1) 
+END 
+    

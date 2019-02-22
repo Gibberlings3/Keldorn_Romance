@@ -1,0 +1,19 @@
+
+// ano_hell.tph - trying to sort out the horrible mess caused by the replacement of Anomen's hell interjection by the NPC Flirt Pack
+
+  PRINT ~Defining Anomen's hell interjection (no romance)~
+  OUTER_SET actual_hell_no_rom = (STATE_WHICH_SAYS 508 IN ~npcflirt/%s/anomenflirt.tra~ FROM ~anomenj~)
+  PRINT ~Defining Anomen's hell interjection (romance)~
+  OUTER_SET actual_hell_rom = (STATE_WHICH_SAYS 509 IN ~npcflirt/%s/anomenflirt.tra~ FROM ~anomenj~)
+  PRINT ~Completed... moving on~
+
+  // making sense of it all...
+
+  ACTION_IF FILE_EXISTS_IN_GAME ~fwanosms.bmp~
+  THEN BEGIN
+    PRINT ~Sorting out hell interjections...~
+    COPY - ~keldorn_rom/dialogue/b!ano_ppg_hell.d~ ~keldorn_rom/dialogue/b!ano_ppg_hell.d~
+      REPLACE_TEXTUALLY ~temp_hell_no_rom~ ~%actual_hell_no_rom%~
+      REPLACE_TEXTUALLY ~temp_hell_rom~ ~%actual_hell_rom%~
+    COMPILE ~keldorn_rom/dialogue/b!ano_ppg_hell.d~
+  END

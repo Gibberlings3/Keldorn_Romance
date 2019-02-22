@@ -1,0 +1,26 @@
+
+// b!baldur.baf - Summons Keldorn when his timer expires 
+
+IF 
+    Global("B!KeldornRomReturn","GLOBAL",5) 
+    GlobalTimerExpired("B!KelTime","GLOBAL") 
+    Global("B!KeldornRA","GLOBAL",1) 
+    AreaType(OUTDOOR)
+THEN 
+    RESPONSE #100 
+        MoveGlobalObject("Keldorn",Player1) 
+        SetGlobal("B!KeldornRomReturn","GLOBAL",6) 
+END 
+
+IF 
+    !InPartyAllowDead("Keldorn") 
+    GlobalGT("B!KeldornRomReturn","GLOBAL",0) 
+    GlobalLT("B!KeldornRomReturn","GLOBAL",5) 
+    GlobalTimerExpired("B!KelTime","GLOBAL") 
+    Global("B!KeldornRA","GLOBAL",1) 
+    AreaType(OUTDOOR) 
+THEN 
+    RESPONSE #100 
+        MoveGlobalObject("Keldorn",Player1) 
+        SetGlobal("B!KeldornRomReturn","GLOBAL",6) 
+END 

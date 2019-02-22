@@ -1,0 +1,49 @@
+
+// b!ar6200.baf - epilogues
+
+// 99999 b!kr_ep1 - not a god, romanced 
+IF 
+    Global("StartEndBios","AR6200",1) 
+    InParty("Keldorn") 
+    Global("KeldornBio","GLOBAL",0) 
+    Global("B!KeldornRA","GLOBAL",2) 
+    !Global("PlayerChoseEssence","GLOBAL",1) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("KeldornBio","GLOBAL",1) 
+        TextScreen("B!KR_EP1") 
+        SmallWait(1) 
+        Continue() 
+END 
+
+// 99998 b!kr_ep2 - not a god, broken romance 
+
+IF 
+    Global("StartEndBios","AR6200",1) 
+    InParty("Keldorn") 
+    Global("KeldornBio","GLOBAL",0) 
+    Global("B!KeldornRA","GLOBAL",3) 
+    !Global("PlayerChoseEssence","GLOBAL",1) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("KeldornBio","GLOBAL",1) 
+        TextScreen("B!KR_EP2") 
+        SmallWait(1) 
+        Continue() 
+END 
+
+// 99998 b!kr_ep2 - became a god, either romanced or broken romance 
+
+IF 
+    Global("StartEndBios","AR6200",1) 
+    InParty("Keldorn") 
+    Global("KeldornBio","GLOBAL",0) 
+    !Global("B!KeldornRA","GLOBAL",0) 
+    Global("PlayerChoseEssence","GLOBAL",1) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("KeldornBio","GLOBAL",1) 
+        TextScreen("B!KR_EP2") 
+        SmallWait(1) 
+        Continue() 
+END 

@@ -1,0 +1,27 @@
+
+// b!kr2out.baf - Boy is alone
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1) 
+        Wait(1) 
+        FadeToColor([20.0],0) 
+        Wait(1) 
+        ActionOverride("b!leona",JumpToPoint([953.1407])) 
+        FaceObject("b!leona") 
+        ActionOverride("Keldorn",FaceObject("b!leona") 
+        ActionOverride("b!leona",FaceObject("Keldorn") 
+        Wait(1) 
+        FadeFromColor([20.0],0) 
+        MoveViewPoint([1229.1545],INSTANT) 
+        Wait(1) 
+        ActionOverride("b!krlboy",DisplayStringHead(Myself,@0)) 
+        Wait(2) 
+        ActionOverride("b!krlboy",DisplayStringHead(Myself,@1)) 
+        Wait(4) 
+        ActionOverride("b!krlboy",DisplayStringHead(Myself,@2)) 
+        Wait(4) 
+        StartCutScene("b!kr3out") 
+END 

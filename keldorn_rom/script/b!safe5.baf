@@ -1,0 +1,21 @@
+
+// b!safe5.baf - moves the PC and the butler from b!celr to b!safe 
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        Wait(1)
+        FadeToColor([20.0],0)
+        Wait(1)
+        ActionOverride("b!kbutlr",MoveBetweenAreas("b!safe",[911.320],11))
+        Wait(1)
+        RestorePartyLocations()
+        MultiPlayerSync()
+        Wait(1)
+        FadeFromColor([20.0],0)
+        MoveViewObject(Player1,INSTANT)
+        Wait(1)
+        ActionOverride("b!kbutlr",StartDialogue("b!kbutlr",Player1))   
+END

@@ -1,0 +1,9 @@
+
+// b!kelmsg.baf - override for Basil, delivers letter to Keldorn
+
+IF 
+    Global("B!KeldornRomReturn","GLOBAL",3) 
+THEN 
+    RESPONSE #100 
+        StartDialogueNoSet("Keldorn") 
+END 

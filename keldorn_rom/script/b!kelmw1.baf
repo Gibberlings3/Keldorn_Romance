@@ -1,0 +1,13 @@
+
+// b!kelmw1.baf - master wraith summons Jolly 
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)  // 
+        CreateVisualEffect("SPFLESHS",[1454.1398])
+        Wait(1)
+        CreateCreature("b!mwjol",[1454.1398],14) 
+        ActionOverride("b!mwjol",StartDialogNoSet(Player1))
+END

@@ -1,0 +1,12 @@
+
+IF 
+    Global("B!KelZashRoom","GLOBAL",2) 
+    PartyHasItem("b!zajour") 
+    !GlobalGT("B!KelPickLock","GLOBAL",0) 
+    !PartyHasItem("b!zakey") 
+THEN 
+    RESPONSE #100 
+        MoveGlobalObject("b!zash",Player1) 
+        SetGlobal("B!KelZashRoom","GLOBAL",3) 
+        ActionOverride("b!zash",StartDialogueNoSet(Player1)) 
+END 

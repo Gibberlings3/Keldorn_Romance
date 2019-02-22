@@ -1,0 +1,26 @@
+
+// b!zashs.baf - Zasheida's override 
+
+IF 
+    Global("B!KelQuest","GLOBAL",2) 
+THEN 
+    RESPONSE #100 
+        StartDialogueNoSet("Keldorn") 
+END 
+
+IF 
+    Global("B!KelZashRoom","GLOBAL",2) 
+    AreaCheck("AR0313") 
+    See(Player1) 
+THEN 
+    RESPONSE #100 
+        StartDialogue("b!zash",Player1) 
+END 
+
+IF 
+    Global("B!KelZashRoom","GLOBAL",20) 
+    See(Player1) 
+THEN 
+    RESPONSE #100 
+        StartDialogue("b!zash",Player1) 
+END 

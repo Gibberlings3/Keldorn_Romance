@@ -1,0 +1,14 @@
+
+// b!zash2.baf - Zasheida goes downstairs for wine 
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        ActionOverride("b!zash",MakeGlobal()) 
+        Wait(1) 
+        ActionOverride("b!zash",EscapeAreaMove("AR0313",296,452,0))
+        Wait(1)
+        EndCutSceneMode() 
+END

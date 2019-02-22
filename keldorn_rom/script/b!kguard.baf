@@ -1,0 +1,40 @@
+
+// b!guard.baf - safe house guard combat script 
+
+IF 
+    Global("B!KelSafeHouseFight","GLOBAL",1) 
+    Global("B!Hostile","LOCALS",0) 
+THEN 
+    RESPONSE #100 
+        Enemy() 
+        SetGlobal("B!Hostile","LOCALS",1) 
+END 
+
+IF 
+    HPPercentLT(Myself,50) 
+    !GlobalTimerNotExpired("UsePotion","LOCALS") 
+    HasItem("potn52",Myself) 
+THEN 
+    RESPONSE #100 
+        DisplayStringHead(Myself,46150) //quaffs a potion
+        UseItem("potn52",Myself) 
+        SetGlobalTimer("UsePotion","LOCALS",TWO_ROUNDS) 
+        Continue()
+END 
+
+IF 
+    See(SecondNearestEnemyOf(Myself)) 
+    Class(SecondNearestEnemyOf(Myself),MAGE_ALL) 
+THEN 
+    RESPONSE #50 
+        AttackReevaluate(NearestEnemyOf(Myself),15) 
+    RESPONSE #50 
+        AttackReevaluate(SecondNearestEnemyOf(Myself),15) 
+END 
+
+IF 
+    See(NearestEnemyOf(Myself)) 
+THEN 
+    RESPONSE #100 
+        AttackReevaluate(NearestEnemyOf(Myself),15)
+END

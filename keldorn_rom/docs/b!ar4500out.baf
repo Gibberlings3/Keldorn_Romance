@@ -1,0 +1,19 @@
+
+// b!ar4500out.baf - outtakes cutscene for the pocket plane
+
+IF 
+    InParty("Keldorn") 
+    Global("B!KR_Outtakes","GLOBAL",1) 
+    Global("B!KeldornRA","GLOBAL",2) 
+    Exists(Player1) 
+    Exists("Keldorn") 
+    !StateCheck("Keldorn",CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KR_Outtakes","GLOBAL",2) 
+        ClearAllActions() 
+        StartCutSceneMode() 
+        StartCutScene("b!kr1out") 
+END 
+

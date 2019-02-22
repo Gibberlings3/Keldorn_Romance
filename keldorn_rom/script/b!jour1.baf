@@ -1,0 +1,27 @@
+
+// b!jour1.baf - getting into hovel 
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        StorePartyLocations()
+        Wait(1)
+        FadeToColor([20.0],0)
+        Wait(1)
+        LeaveAreaLUAPanic("b!hovl","",[501.538],8)
+        LeaveAreaLUA("b!hovl","",[501.538],8)
+        ActionOverride(Player2,MoveBetweenAreas("b!hovl",[598.563],8)
+        ActionOverride(Player3,MoveBetweenAreas("b!hovl",[475.576],8)
+        ActionOverride(Player4,MoveBetweenAreas("b!hovl",[534.593],8)
+        ActionOverride(Player5,MoveBetweenAreas("b!hovl",[437.605],8)
+        ActionOverride(Player6,MoveBetweenAreas("b!hovl",[497.619],8)
+        MultiPlayerSync()
+        Explore()
+        Wait(1)
+        FadeFromColor([20.0],0)
+        MoveViewObject(Player1,INSTANT)
+        Wait(1)
+        EndCutSceneMode() 
+END 

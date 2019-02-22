@@ -1,0 +1,29 @@
+
+@50000  = ~berelinde's Keldorn Romance~
+@50001  = ~The Keldorn Romance requires the Throne of Bhaal expansion~
+@50002  = ~Romance is available to LG/NG protagonists only (Recommended)~
+@50003  = ~This component requires berelinde's Keldorn Romance~
+@50004  = ~Romance Match~
+@50005  = ~Romance is available to LG/NG/CG protagonists~
+@50006  = ~Romance is available to LG/NG/CG/LN protagonists~
+@50007  = ~Romance is available to LG/NG/CG/LN/N protagonists~
+@50008  = ~More youthful-looking portrait by Senka~
+@50009  = ~Select Keldorn's dialogue timer:~
+@50010  = ~Please choose one of the following:
+[1] 10 (SoA)/15 (ToB) minutes real time minimum between dialogues
+[2] 20 (SoA)/30 (ToB) minutes real time minimum between dialogues
+[3] 30 (SoA)/45 (ToB) minutes real time minimum between dialogues (recommended)
+[4] 45 (SoA)/60 (ToB) minutes real time minimum between dialogues 
+[5] 1 (SoA)/1.5 (ToB) hour real time minimum between dialogues~
+@50011  = ~Please select 1, 2, 3, 4, or 5 and press enter.~
+@50012  = ~Speed: minimum 10 minutes (SoA)/15 minutes (ToB) real time between dialogues~
+@50013  = ~Speed: minimum 20 minutes (SoA)/30 minutes (ToB) real time between dialogues~
+@50014  = ~Speed: minimum 30 minutes (SoA)/45 minutes (ToB) real time between dialogues~
+@50015  = ~Speed: minimum 45 minutes (SoA)/60 minutes (ToB) real time between dialogues~
+@50016  = ~Speed: minimum 1 hour (SoA)/1.5 hour (ToB) real time between dialogues~
+/*
+@50017  = 
+@50018  = 
+@50019  = 
+@50020  = 
+*/

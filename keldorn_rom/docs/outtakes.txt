@@ -1,0 +1,258 @@
+
+Outtakes: A section or scene, as of a movie, that is filmed but not used in the final version.
+
+Congratulations! You've found the Easter egg! 
+
+During the development of any mod, typos happen, things aren't as clear as they could be, late-night misinterpretation happens. Some of it is downright funny. Usually, these things are buried in a private workroom somewhere or lost in the modder's PM folder, but I decided to share some of the choicer comments with you. Published with permission by Editors 1 and 2. Language is... colorful.
+
+===============================================================================
+Editor 1 to berelinde (27May2010)
+===============================================================================
+
+K20.11 Expand the "aren't" - PC is making an important point here.
+
+-------------------------------------------------------------------------------
+berelinde to Editor 1 (27May2010)
+-------------------------------------------------------------------------------
+"You aren't an old man." That's the only PC reply with the word "aren't" in it, and I think that she's made her point about as bluntly as possible. What else could she say? If she elaborates on that too much, he'll probably doubt her sincerity. 
+
+PC: You aren't an old man. You aren't as old as Gorion, anyway.
+Keldorn: Was that the first name you thought of?
+
+PC: You aren't an old man. You've got a lot of life in you yet.
+Keldorn: Shall I assume that you have already ordered my headstone?
+
+PC: You aren't an old man. You are more vigorous and attractive than many men half your age.
+Keldorn: Like hells.
+
+
+===============================================================================
+berelinde to Editor 1 (04Jun2010), regarding interjections that mention Maria or marriage:
+===============================================================================
+
+Crazy Celvan... yeah, I should probably change that one. Not sure about the Trademeet Gypsy. 
+
+Trademeet Gypsy: /* ~You are a man of great pride, to match your strength and honor. Banish your pride -- or lose all that is important to you! Your greatest challenge yet awaits.~ */
+Keldorn: /* ~I, for one, do not like to ponder overmuch the possibilities that the future may hold for me. But I shall heed your words, lady.~ */
+
+I don't have to change a thing with that one. It seems custom made for a Keldorn/PC romance that isn't going to flower until ToB... after Keldorn swallows his pride.
+
+Crazy Celvan: /* ~"There once was a knight pure of heart,
+from his wife he is always apart.
+Has his heart grown colder
+as his deeds grew bolder?
+What is finished can never restart."
+~ */
+Keldorn: /* ~How dare you speak of my wife! How do you know of this? HOW?!~ */
+Crazy Celvan: /* ~Tee-hee hee!~ */ (runs away)
+
+Oh, drat. I'm going to have to do a lot of tweaking with that one. He can say that until he gets the letter. When he returns, I'll change Keldorn's line to "Your warning is late, I fear."
+
+From talk 12 or so onward (where he starts to emerge from his shell), I'd probably better give Celvan a new limmerick. Gah. I hate writing limericks. I suck at it very, very much.
+
+There once was a knight pure of heart, 
+Whose ex-wife was no more than a tart.
+She said if he stayed,
+She'd do all he craved, 
+But then jilted the rusty old fart.
+
+Er... no. Better keep trying.
+
+===================================================================
+Editor 1 to berelinde, 07June2010
+===================================================================
+
+-------------------------------------------------------------------
+berelinde to Editor, comment regarding the logistics of sending a really long dialogue via PM
+-------------------------------------------------------------------
+It's long. Let's hope that it fits.
+
+-------------------------------------------------------------------
+Editor 1 response:
+-------------------------------------------------------------------
+I knew I had to take a break yesterday when I read that and couldn't work if it was <CHARNAME> or Keldorn who said it  
+
+====================================================================
+Editor 2 to berelinde via IM, 07June2010 
+====================================================================
+hey  
+ found a typo for you 
+ ++ ~So... you're  free man, eh?~ + K3.10 
+ should be....  ++ ~So... you're a free man, eh?~ + K3.10  yes?
+ cause the first way sounds so... prostitute  
+
+====================================================================
+Editor 1 to berelinde, 09Jun2010 
+====================================================================
+original line: Helm is one of the most frequently revered deities, here in Athkatla, so the High Watcher maintains a separate shrine here, amidst the bustle of the Bridge District. The main temple is located in the temple district.
+
+gc_ar0512 "Helm is one of the most revered deities" I think that "frequently" means they keep revering him on many occasions, rather than him having a high level of Reveredness. Reveredosity. Reverence! Dammit, Reverence!
+
+====================================================================
+berelinde to Editor 1, BG2 comparative anthropology of human male NPCs, 12 June 2010
+====================================================================
+
+--------------------------------------------------------------------
+Editor 1 to berelinde, comment on horrible dialogue 12 June 2010 
+--------------------------------------------------------------------
+hand3.3a "Keldorn's hand is large, with long, strong-looking fingers. His nails are clean and neatly trimmed, but his fingers and palm are thickly callused" This seems clumsy, I think because of the long/strong internal rhyme. What happens if you switch the strong to the hand. "Keldorn's hand is strong and large, with long fingers"? Have a look at http://forum.wordreference.com/showthread.php?t=1764372 for your options on what his fingers and palm are.
+
+(berelinde comment: thus proving that lots of my stuff really sucks until it's been through editing.)
+--------------------------------------------------------------------
+berelinde to Editor 1, explanation and revision 12 June 2010 
+--------------------------------------------------------------------
+It's callused in American English. Calloused is... well, I've never seen it used as an adjective. Callous is cruel and unfeeling. When you type calloused into dictionary.com, it tells you that "calloused" is hardened, but the second definition is "made unsympathetic."
+
+The point I was trying to make here is that Keldorn doesn't have the big, beefy hands that Minsc does or the big, square hands that Gavin does. Yes, all our guys have big hands. I guess the smaller-handed guys all went off to become mages or accountants. 
+
+IF ~~ hand3.3a 
+SAY ~(Keldorn's hand is large, but narrower than his build might suggest. His nails are clean and neatly trimmed, but his fingers and palm are thickly callused.)~ 
+IF ~~ THEN + pid2 
+END 
+
+
+
+Optional tangent: Comparative study of frame/hand shape for several human male NPCs 
+(Stereo-type alert! Regional descriptions are used. They are not intended to imply that all (or any) real world 
+individuals from a specific region conform to a specific build.)
+
+Cernd: slightly shorter than average height, not a particluarly powerful build. He comes from merchant stock, and they don't breed 'em for size. Then again, he can turn into a werewolf, so what does he care? Think "Mediterranean" body type, short and slightly stocky.
+
+Edwin: shorter than average height (regardless of what the mod says - Thayvian males are short and slight!), slim build. His chest is relatively narrow, as are his hips. His limbs are not exactly stick-thin, but he doesn't need a lot of strength. His hands are average-sized, slender, and very elegant, with long, tapering fingers. 
+
+Gavin: quite tall, but spare of frame. His family has a good deal of Luskan blood, which favors a tall, lean build. He's more wiry than bulky, though his love of food will probably give him a bit of a paunch when he gets older, if he's allowed to settle down and raise a family the way he wants to. This will embarrass him no end, since his faith requires that he be physically fit, but he'll just shurg and say that his wife is a good cook (even if privately, he's the one that does all the cooking). His hands are long and squared-off, with slightly prominent knuckles. Think "Nordic" body type.
+
+Keldorn: taller than average with a broad, muscular frame. His chest a good deal wider than his hips. He comes from old money, and the gene-pool there is traditionally well chlorinated. Your average Amnish nobleman would have led a sedentary life, padding his good bone-structure with a hefty layer of fat, but Keldorn has probably never been idle a day in his life, so of all the BG2 human male NPCs, he is probably the one whose body most closely matches the Northern European ideal. His hands are big because his bones are, but they are more slender than would expect on a barbarian.
+
+Minsc: average height (tall for a Rashemi, but they run shorter than is customary elsewhere in Faerun), incredibly muscular frame, barrel-chested, broad-hipped, and legs like tree-trunks. His hands are a little bigger than average with short, powerful fingers that could tear the top off of a tin can. Think "Slavic" body type, short and exceptionally sturdy.
+
+Valygar: Your guess is as good as mine. I do not know the Forgotten Realms area that would produce a person who looks African, so I couldn't tell you what to expect. I always pictured him as having a runner's build: average height but long-legged, with a powerful chest and legs. I imagined his hands as being long, slim, and big-knuckled, but I could be wrong.
+
+--------------------------------------------------------------------------
+Editor to berelinde, comments 12 June 2010 
+--------------------------------------------------------------------------
+QUOTE 
+IF ~~ hand3.3a 
+SAY ~(Keldorn's hand is large, but narrower than his build might suggest. His nails are clean and neatly trimmed, but his fingers and palm are thickly callused.)
+
+
+"large and strong" The strong is important. 
+
+
+
+QUOTE 
+Optional tangent: Comparative study of frame/hand shape for several human male NPCs
+
+
+outakes! just to prove how much thought and care goes in to these.
+
+----------------------------------------------------------------------------
+berelinde to Editor 1, follow-up 12 June 2010 
+----------------------------------------------------------------------------
+Gah, I missed the point. And who cares what his palm looks like, anyway? Talking about it will only send peoples' minds straight to the gutter.
+
+SAY ~(Keldorn's hand is large, but narrower than his build might suggest. His nails are clean and neatly trimmed, but his fingers are strong and thickly callused.)~ 
+
+============================================================================
+Editor 1 to berelinde, 13 June 2010 
+============================================================================
+w1.back.2g10 "Sleep well, belo-" Not corny at all. At a push you could leave out "belo-" and give him an ellipsis before friend to show that he hesitated to find the right word. But better to leave it in - this is the man who under stress loses his normally fluid control of language, calling the PC "Maria" earlier. And he's just had to fight off the urge to stay longer as well as having his back tended so he's allowed a bijou slippette I think.
+
+----------------------------------------------------------------------------
+berelinde to Editor 1, 13 June 2010 
+----------------------------------------------------------------------------
+"bijou slippette" is by far the most delightful way of saying "slip of the tongue" that I have ever heard.
+
+=============================================================================
+Editor to berelinde, 19 June 2010 
+=============================================================================
+Original line: ~(Keldorn sees your approach but he does not stop you. Instead, he takes your face in his hands while he kisses you. His caress is brief, but you feel him tremble. When your lips part, he draws a deep, shuddering breath before speaking.)~ 
+
+k_lips.6 "Keldorn sees your approach" sounds as if you are landing a plane on an aircraft carrier. "sees you approach"?
+
+-----------------------------------------------------------------------------
+berelinde to Editor 1, 19 June 2010 
+-----------------------------------------------------------------------------
+I'm sure it felt rather like that to Keldorn. Here she comes... closer... closer.... oh gods, she's going to kiss me, isn't she?
+
+=============================================================================
+Editor to berelinde, 13 July 2010 
+=============================================================================
+IF ~~ K1.23
+SAY ~There is no barrier between us. We are free love each other mind, heart, and soul... and body, if you will allow it.~ 
+
+"free to love" perhaps. Or is Keldorn a flower child about to let rip with the Dawning of the Age of Aquarius? in which case "We can free love each other".
+
+=============================================================================
+berelinde caught it herself, for a change, 16 December 2011
+=============================================================================
+
+Everyone makes mistakes. Here's another one. It occurred because I can't count. Look closely at the transition to K6.23, and then look at the state itself. That should have gone with K6.24, if anybody is keeping track.
+
+
+IF ~~ K6.20 
+SAY ~My love, we will have many tasks to occupy us. Whether she intended it or not, we have Lady Maria to thank for the joyful future we have ahead of us.~ 
+= ~Who knows? She may have been acting in my best interests the whole time. When she discovers that we have found each other, she may be happy for us both.~ 
+++ ~That would not surprise me one bit.~ + K6.22 
+++ ~Or she may try to gouge out my eyes with a fork.~ + K6.23
+++ ~You just keep telling yourself that.~ + K6.24 
+++ ~Does it even matter? How often will we have to see her?~ + K6.25 
+++ ~Sometimes, you have to be cruel to be kind.~ + K6.22 
+END 
+
+IF ~~ K6.21 
+SAY ~It was the pain of rebirth.~ 
+IF ~~ THEN + K6.20 
+END 
+
+IF ~~ K6.22 
+SAY ~Indeed.~ 
+IF ~~ THEN + K6.26 
+END 
+
+IF ~~ K6.23 
+SAY ~I shall... as often as necessary.~ IF ~~ THEN + K6.26 
+END 
+
+=============================================================================
+IM conversation with Editor 3, 16 December 2011
+=============================================================================
+berelinde says (5:56 PM):
+ This one is threatening to slip off into "homesick" mode
+Editor3 says (5:56 PM):
+ On whose part?
+berelinde says (5:58 PM):
+ Keldorn's. He is looking forward to showing his future bride around and acting like a newlywed. I'm just about at the point where he can feel guilty for being cheerful when his lover's life is so uncertain. And then it's straight on to step-mom. I think.
+Editor3 says (5:58 PM):
+ Ah. Well, he's allowed to be nostalgic some of the time.
+ And you can always give the PC a couple of "snap out of it" lines.
+ Or even just "Shut up and kiss me, you fool"  
+berelinde says (5:59 PM):
+ Yeah, they're kinda lacking. The "Snap out of it" lines.
+berelinde says (6:00 PM):
+ But the guy stalled long enough. If his giddiness wears off too soon, it will seem unconvincing. And it will make the "We were dreaming, weren't we?" talk more poignant.
+Editor3 says (6:00 PM):
+ Oh, it's going to wear off?
+berelinde says (6:01 PM):
+ Kinda, yeah. After Challenge 4, it's pretty hard to deny that the PC will have the chance to become a god. Keldorn will have to accept that the last month or two may be all the time they have together.
+Editor3 says (6:01 PM):
+ Ah, yes.
+berelinde says (6:03 PM):
+ He'll man up respectably, though. Something about, If it will never be more than a dream, at least it was a good one. I would not have traded our brief time together for anything.
+berelinde says (6:04 PM):
+ Except that it won't suck.
+Editor3 says (6:04 PM):
+ Of course it won't.
+berelinde says (6:04 PM):
+ And he'll come dangerously close to begging in the final solar talk.
+ He has to.
+Editor3 says (6:05 PM):
+ Yes, of course he does.
+ After everything.
+ "Yes, dear, it was fun. Now go run off and be the new god of murder!"
+ "Send a postcard or two, won't you?
+
+
+
+
+

@@ -1,0 +1,55 @@
+
+// b!vakols.baf - Vakola's combat script 
+
+
+IF 
+    HPPercentLT(Myself,50) 
+    !GlobalTimerNotExpired("UsePotion","LOCALS") 
+    HasItem("potn52",Myself) 
+THEN 
+    RESPONSE #100 
+        DisplayStringHead(Myself,46150) //quaffs a potion
+        UseItem("potn52",Myself) 
+        SetGlobalTimer("UsePotion","LOCALS",TWO_ROUNDS) 
+        Continue()
+END 
+
+IF 
+    Global("B!Hostile","LOCALS",0) 
+    OR(2) 
+          Global("B!KelQuestFight","GLOBAL",1) 
+          Global("B!KelQuestBetray","GLOBAL",1) 
+THEN 
+    RESPONSE #100 
+    	EquipMostDamagingMelee()
+        Enemy() 
+        SetGlobal("B!Hostile","LOCALS",1) 
+END 
+
+IF 
+    Global("B!KelQuestFight","GLOBAL",1)  
+    Global("Buff","LOCALS",0) 
+THEN 
+    RESPONSE #100 
+        ReallyForceSpell(Myself,CLERIC_ARMOR_OF_FAITH) 
+        ReallyForceSpell(Myself,CLERIC_DRAW_UPON_HOLY_MIGHT) 
+        ReallyForceSpell(Myself,CLERIC_CHANT) 
+        SetGlobal("Buff","LOCALS",1) 
+END 
+
+IF 
+    See(SecondNearestEnemyOf(Myself)) 
+    Class(SecondNearestEnemyOf(Myself),MAGE_ALL) 
+THEN 
+    RESPONSE #50 
+        AttackReevaluate(NearestEnemyOf(Myself),15) 
+    RESPONSE #50 
+        AttackReevaluate(SecondNearestEnemyOf(Myself),15) 
+END 
+
+IF 
+    See(NearestEnemyOf(Myself)) 
+THEN 
+    RESPONSE #100 
+        AttackReevaluate(NearestEnemyOf(Myself),15)
+END

@@ -1,0 +1,25 @@
+
+// b!safe2.baf - moves the PC and the butler to the cellar  
+
+IF 
+    True() 
+THEN 
+    RESPONSE #100 
+        CutSceneId(Player1) 
+        Wait(1) 
+        StorePartyLocations() 
+        FadeToColor([20.0],0)
+        Wait(1) 
+        ActionOverride("b!kbutlr",MoveBetweenAreas("b!celr",[563.276],0) 
+        LeaveAreaLUAPanic("b!celr","",[489.251],0)
+        LeaveAreaLUA("b!celr","",[489.251],0) 
+        FaceObject("b!kbutlr") 
+        ActionOverride("b!kbutlr",FaceObject(Player1) 
+        MultiPlayerSync()
+        Explore()
+        Wait(1)
+        FadeFromColor([20.0],0)
+        MoveViewObject(Player1,INSTANT)
+        Wait(1)
+        ActionOverride("b!kbutlr",StartDialogue("b!kbutlr",Player1))   
+END 

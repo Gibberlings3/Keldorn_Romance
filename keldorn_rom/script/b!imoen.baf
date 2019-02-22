@@ -1,0 +1,31 @@
+
+// b!imoen.baf - Imoen's romance comments 
+
+IF 
+    InParty(Myself) 
+    InParty("Keldorn") 
+    GlobalGT("B!KelLT","GLOBAL",24) 
+    Global("B!KelRomImo1","GLOBAL",0) 
+    Global("B!KeldornRA","GLOBAL",1) 
+//    !Global("B!NoNPCComments","GLOBAL",1) 
+    CombatCounter(0) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck("Keldorn",CD_STATE_NOTVALID) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KelRomImo1","GLOBAL",1) 
+END 
+
+IF 
+    InParty(Myself) 
+    InParty("Keldorn") 
+    Global("B!KelRomImo1","GLOBAL",1) 
+    Global("B!KeldornRA","GLOBAL",1) 
+//    !Global("B!NoNPCComments","GLOBAL",1) 
+    CombatCounter(0) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck("Keldorn",CD_STATE_NOTVALID) 
+THEN 
+    RESPONSE #100 
+        StartDialogueNoSet(Player1)  
+END 

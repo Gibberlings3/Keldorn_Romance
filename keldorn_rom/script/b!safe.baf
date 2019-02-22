@@ -1,0 +1,10 @@
+
+// b!safe.baf - Spawn safe house butler 
+
+IF 
+    Global("B!ButlerSpawn","B!SAFE",0) 
+THEN 
+    RESPONSE #100 
+        CreateCreature("b!kbutlr",[911.320],11) 
+        SetGlobal("B!ButlerSpawn","B!SAFE",1) 
+END 

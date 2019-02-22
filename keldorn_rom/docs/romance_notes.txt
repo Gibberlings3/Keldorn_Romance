@@ -1,0 +1,84 @@
+
+GENERAL NOTES
+
+To begin the Keldorn Romance, you must allow Keldorn and Maria to reconcile. He will only
+consider himself free if his marriage to Maria is legally ended, and imprisoning Maria will
+only separate them, not divorce them. Also, Maria's incarceration might present childcare 
+issues that would be impossible to overcome. 
+
+It doesn't matter whether you witness their reconciliation or send him to do it alone, but if 
+you send him on alone, you MUST at least speak with him in the Order of the Radiant Heart 
+headquarters afterward. It also does not matter whether you retain him in your party after he 
+and Maria have reconciled or release him from your service, although things will be slightly 
+different depending on which you choose.
+
+If you release him from your service, he will find you five days later and tell you of his 
+situation. If you retain Keldorn in your party or if you return to claim him within five days 
+of dismissing him, he will receive a letter demanding that he return home at once... alone. He 
+will return the next day and inform you of what happened. From there on, the paths are identical.
+
+The romance moves slowly, and the first half will probably be tiresome. He is grieving, and he 
+will have difficulty focusing on the world outside his pain. All things pass, however, and he 
+will start to feel better eventually. The romance is very long, 35 timered talks in all, though 
+the default timer is shorter than most romances. There will be no commitment in SoA, and 
+therefore no Bodhi abduction, but by the time you get to ToB... well, you'll see. 
+
+This is a mature romance in the sense that it deals with adult subjects... and not in any kind of sexual context. The serious nature of it will not appeal to most players, so no feelings will be hurt if you find that you do not enjoy it.
+
+Divorce has become prevalent in society, so some players may find that it hits too close to home. 
+Others may disagree with the mod's handling of it. As Tolstoy wrote, happy families are all alike; 
+every unhappy family is unhappy in its own way. The Keldorn Romance is but one way of many that 
+a bereaved man might pass through sorrow into joy. Every effort has been made to treat the 
+subject maturely and with the sensitivity it deserves, but it is possible that character reactions and behavior will differ from your version of a Keldorn Romance.
+
+
+Q: Who is eligible for romance?
+A: Different players have different ideas of the kind of woman that could have a successful relationship with Keldorn. With that in mind, the player can choose the romance match conditions. All require that the PC be female.
+
+If you believe that Keldorn would only be drawn to a PC that will satisfy his long-term need for a like-minded help-mate who shares his devotion to goodness and (reasonable) lawfulness, choose LG/NG only. This option is strongly recommended, as the romance has been written with this in mind.
+
+PnP says that paladins cannot ally themselves with neutral party leaders for more than an 
+adventure or two, but it makes no mention of chaotic ones. If you feel that the romance shouldn't bother with it if the rulebooks don't, choose LG/NG/CG.
+
+If you believe that Keldorn could well find contentment with a LN PC, choose LG/NG/CG/LN.
+
+If you think that Keldorn could be happy with a druid, choose LG/NG/CG/LN/N. With that in mind, 
+Keldorn is not likely to be swayed by pleas to maintain the Balance. He wants the good guys to
+win.
+
+
+Q: What about thieves?
+A: Keldorn is a man of the world. He will not tolerate blatant boasting of theivery, but he 
+understands that a thief's ability to open locks and disarm traps can be used to aid the forces of good. After all, bards can pick pockets too, and no one has ever suggested that paladins should not romance bards. A word of warning, however: If you choose the "I love to rob people! Mwahahahah!" dialogue option, do not be surprised if Keldorn is no longer interested. Chances are good that it will be a lot more subtle than that, so if you are a thief or a bard, please be aware of the dangers inherent in taking too much pride in illicit activities. 
+
+Q: Why is he suddenly so self-absorbed?
+A: You're still in the first half of the romance. He is a newly divorced man. Most, if not all, 
+newly divorced men are narcissistic, be they saints or sinners. He will emerge from his chrysalis eventually, but there will be a couple of key differences from most mod romances. There won't be any NPC-initiated flirts. Keldorn does not consider himself your suitor. There will not be any situational or area-specific dialogue. Keldorn barely notices the world around him, so it would be unrealistic for him to comment upon it.
+
+Q: Why is nothing voiced?
+A: Roger L. Jackson is a professional voice actor. It is unlikely that he would donate his talents for a fan-made mod. Replacing Keldorn's voice with another would be unthinkable. Please enjoy the complimentary musical theme instead.
+
+Q: What is the maturity level of the mod?
+A: It is intended for an emotionally mature audience. There is very little sexually suggestive 
+content compared to other mods by the same author, but not all mature content is sexual in nature.
+Some of the banters and themes are quite dark.
+
+Q: Keldorn seems conflicted. He told me we're just friends, but he sometimes sounds like he wants more.
+A: You're on the right track. There is a very good reason the mod will not be publicly available until the ToB content is completed.
+
+Q: Can I tell Keldorn to go talk to Maria, or does he have to confront Sir William?
+A: For the romance to begin, Keldorn and Maria have to be allowed to reconcile. If you tell 
+Keldorn to go talk to Maria, she will wind up in prison and Sir William will wind up dead. So yes, you must confront Sir William.
+
+
+HINTS: 
+
+Keldorns flirt menu does not change much throughout the mod, however his reaction to flirting goes through five distinct stages. Since some of the more explicit flirts (such as they are) only appear once, it's probably a good idea to save them until later in the romance, after talk 20. How will you know whether they are explicit? They will involve touching an article of apparel other than footgear.
+
+Save often. Unlike other mods by the same author, there is no way to restart a romance once it has ended. There is no provision for concurrent romances. Keldorn's friendship with the PC will 
+continue if the PC is committed to another, but it will never progress to an actual romance.
+
+If possible, do try to do Watcher's Keep in SoA. There is an interjection there that the romanced PC will not want to miss.
+
+Also, you might want to make sure you talk to Keldorn in various locations, especially inns. As an Athkatla native, he can tell you at least something about most of the areas in the game.
+

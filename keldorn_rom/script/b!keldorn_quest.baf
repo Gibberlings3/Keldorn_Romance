@@ -1,0 +1,416 @@
+
+// b!keldorn_quest.baf - Keldorn's quest-related script 
+
+IF 
+    InParty(Myself) 
+    GlobalGT("B!KeldornRomReturn","GLOBAL",0)               // starts Keldorn's quest timer, no active romance 
+    !Global("B!KeldornRA","GLOBAL",1) 
+    Global("B!KelQuest","GLOBAL",0) 
+THEN 
+    RESPONSE #100 
+        SetGlobalTimer("B!KelQuestTime","GLOBAL",TWO_DAYS) 
+        SetGlobal("B!KelQuest","GLOBAL",1) 
+END 
+
+IF 
+    InParty(Myself) 
+    GlobalGT("B!KeldornRomReturn","GLOBAL",7)               // starts Keldorn's quest timer, active romance 
+    Global("B!KeldornRA","GLOBAL",1) 
+    Global("B!KelQuest","GLOBAL",0) 
+THEN 
+    RESPONSE #100 
+        SetGlobalTimer("B!KelQuestTime","GLOBAL",TWO_DAYS) 
+        SetGlobal("B!KelQuest","GLOBAL",1) 
+END 
+
+IF 
+    InParty(Myself) 
+    Global("B!KelQuest","GLOBAL",3)                         // bumped into Zasheida, cues debriefing with PC 
+    !See("b!zash") 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KelQuest","GLOBAL",4) 
+END 
+
+IF 
+    InParty(Myself)                                         // Keldorn debriefs the PC about Zasheida 
+    Global("B!KelQuest","GLOBAL",4) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        StartDialogueNoSet(Player1)  
+END 
+
+IF 
+    InParty(Myself)                                         // Keldorn recognizes Zasheida inside the Sea's Bounty 
+    Global("B!KelQuest","GLOBAL",5) 
+    AreaCheck("AR0313") 
+    InMyArea("b!zash") 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KelQuest","GLOBAL",6)   
+END 
+   
+IF 
+    InParty(Myself)                                         // Keldorn points Zasheida out 
+    Global("B!KelQuest","GLOBAL",6) 
+    AreaCheck("AR0313") 
+    InMyArea("b!zash") 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        StartDialogueNoSet(Player1)  
+END 
+
+IF 
+    InParty(Myself)                                         // The party has Zasheida's journal 
+    Global("B!KelQuest","GLOBAL",7) 
+    PartyHasItem("b!zajour") 
+THEN 
+    RESPONSE #100 
+        AddexperienceParty(12000)
+        SetGlobal("B!KelQuest","GLOBAL",8) 
+END 
+
+IF 
+    InParty(Myself)                                         // Keldorn remarks about the journal
+    PartyHasItem("b!zajour") 
+    Global("B!KelJournal","LOCALS",0) 
+    Global("B!KelQuest","GLOBAL",8) 
+    InMyArea(Player1) 
+    !InMyArea("b!zash") 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KelJournal","LOCALS",1)   
+END 
+
+IF 
+    InParty(Myself) 
+    Global("B!KelJournal","LOCALS",1) 
+    Global("B!KelQuest","GLOBAL",8) 
+    InMyArea(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        StartDialogueNoSet(Player1)    
+END 
+
+IF 
+    InParty(Myself)                                         // Keldorn's dialogue if a fight breaks out at the safe house 
+    Global("B!KelSafeHouseFight","GLOBAL",1) 
+    InMyArea(Player1) 
+    AreaCheck("b!safe") 
+    Dead("b!kbtlr2") 
+    Dead("b!kgard1") 
+    Dead("b!kgard2") 
+    Dead("b!kgard3") 
+    Dead("b!kgard4") 
+    Dead("b!kthef1") 
+    Dead("b!kthef2") 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KelSafeHouseFight","GLOBAL",2)   
+END 
+
+IF 
+    InParty(Myself) 
+    Global("B!KelSafeHouseFight","GLOBAL",2) 
+    InMyArea(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        StartDialogueNoSet(Player1)    
+END 
+
+IF 
+    InParty(Myself)                                         // Keldorn comments on the ship charters if a fight broke out 
+    PartyHasItem("b!shipch") 
+    Global("B!KelSafeHouseFight","GLOBAL",3) 
+    InMyArea(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KelSafeHouseFight","GLOBAL",4)   
+END 
+
+IF 
+    InParty(Myself) 
+    Global("B!KelSafeHouseFight","GLOBAL",4) 
+    InMyArea(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        StartDialogueNoSet(Player1)    
+END 
+
+IF 
+    InParty(Myself)                                         // advances quest global when ship charters are in inventory 
+    PartyHasItem("b!shipch") 
+    Global("B!KelQuest","GLOBAL",15) 
+THEN 
+    RESPONSE #100 
+        SetGlobalTimer("B!KelQuestTime","GLOBAL",ONE_DAY) 
+        SetGlobal("B!KelQuest","GLOBAL",16) 
+END 
+
+IF 
+    InParty(Myself)                                         // Keldorn talks to PC after PC distracts butler with wine 
+    Global("B!KelDistractWine","GLOBAL",4) 
+    !AreaCheck("b!safe") 
+    InMyArea(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KelDistractWine","GLOBAL",5)   
+END 
+
+IF 
+    InParty(Myself) 
+    Global("B!KelDistractWine","GLOBAL",5) 
+    InMyArea(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        StartDialogueNoSet(Player1)    
+END 
+
+IF 
+    InParty(Myself)                                         // Keldorn talks to PC after PC distracts butler with sex 
+    Global("B!KelDistractSex","GLOBAL",4) 
+    !AreaCheck("b!safe") 
+    InMyArea(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KelDistractSex","GLOBAL",5)   
+END 
+
+IF 
+    InParty(Myself) 
+    Global("B!KelDistractSex","GLOBAL",5) 
+    InMyArea(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        StartDialogueNoSet(Player1)    
+END 
+
+IF 
+    InParty(Myself)                                         // Keldorn talks to PC after PC distracts butler with allegations of badger breeding
+    Global("B!KelDistractBadger","GLOBAL",4) 
+    !AreaCheck("b!safe") 
+    InMyArea(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KelDistractBadger","GLOBAL",5)   
+END 
+
+IF 
+    InParty(Myself) 
+    Global("B!KelDistractBadger","GLOBAL",5) 
+    InMyArea(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        StartDialogueNoSet(Player1)    
+END 
+
+IF                                                          // Spawns Vakola in the Slums after the PC has obtained the ship charters
+    InParty(Myself) 
+    Global("B!KelQuest","GLOBAL",16) 
+    GlobalTimerExpired("B!KelQuestTime","GLOBAL") 
+    AreaCheck("AR0400") 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        CreateCreatureObject("b!vakola","Keldorn",0,0,0) 
+        SetGlobal("B!KelQuest","GLOBAL",17) 
+END 
+
+
+IF 
+    InParty(Myself)                                         // Keldorn talks to PC after Vakola threatens him and disappears
+    Global("B!KelQuest","GLOBAL",19) 
+    InMyArea(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KelQuest","GLOBAL",20)   
+END 
+
+IF 
+    InParty(Myself) 
+    Global("B!KelQuest","GLOBAL",20) 
+    InMyArea(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        StartDialogueNoSet(Player1)    
+END 
+
+IF 
+    InParty(Myself) 
+    Global("B!KelQuest","GLOBAL",21) 
+    GlobalTimerExpired("B!KelQuestTime","GLOBAL") 
+    AreaType(OUTDOOR) 
+    AreaType(CITY) 
+    !AreaCheck("AR2000") 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        CreateCreatureObject("b!vakola","Keldorn",0,0,0) 
+        SetGlobal("B!KelQuest","GLOBAL",22) 
+END 
+
+IF                                                                    // Keldorn talks to PC after fighting Vakola 
+    Global("B!KelQuestBetray","GLOBAL",1) 
+    Dead("b!vakola") 
+    Dead("b!zash") 
+    Dead("b!kmage1") 
+    Dead("b!kmage2") 
+    Dead("b!kmage3") 
+    Dead("b!kmage4") 
+    InMyArea(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KelQuestBetray","GLOBAL",2)   
+END 
+
+IF 
+    Global("B!KelQuestBetray","GLOBAL",2) 
+    InMyArea(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        StartDialogue("KELDORP",Player1)    
+END 
+
+IF                                                                    // Keldorn talks to PC after fighting Vakola 
+    InParty(Myself) 
+    Global("B!KelQuestFight","GLOBAL",1) 
+    Dead("b!vakola") 
+    Dead("b!zash") 
+    Dead("b!kmage1") 
+    Dead("b!kmage2") 
+    Dead("b!kmage3") 
+    Dead("b!kmage4") 
+    InMyArea(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KelQuestFight","GLOBAL",2)   
+END 
+
+IF 
+    InParty(Myself) 
+    Global("B!KelQuestFight","GLOBAL",2) 
+    InMyArea(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        StartDialogueNoSet(Player1)    
+END 
+
+IF                                                                    // Keldorn talks to PC after resolving the quest peacefully 
+    InParty(Myself) 
+    Global("B!KelQuestResolve","GLOBAL",1) 
+    InMyArea(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KelQuestResolve","GLOBAL",2)   
+END 
+
+IF 
+    InParty(Myself) 
+    Global("B!KelQuestResolve","GLOBAL",2) 
+    InMyArea(Player1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        StartDialogueNoSet(Player1)    
+END 

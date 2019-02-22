@@ -1,0 +1,43 @@
+
+// b!lgngcg.baf - player has installed the LG/NG/CG romance match (alternative match 1)
+/*
+IF 
+    Global("B!KR_Match","GLOBAL",0) 
+    Gender(Player1,FEMALE) 
+    Alignment(Player1,MASK_GOOD) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KR_Match","GLOBAL",1) 
+END 
+*/
+/* Keldorn and Maria have reconciled. Sets the timer for the meltdown and sets RA to 1 */ 
+/*
+IF 
+    Global("B!KeldornRA","GLOBAL",0) 
+    Global("B!KR_Match","GLOBAL",1) 
+    Global("B!KR_Supportive","GLOBAL",1) 
+    Global("B!KeldornRomReturn","GLOBAL",1) 
+THEN 
+    RESPONSE #100 
+        SetGlobalTimer("B!KelTime","GLOBAL",FIVE_DAYS) 
+        SetGlobal("B!KeldornRomReturn","GLOBAL",2) 
+        SetGlobal("B!KeldornRA","GLOBAL",1) 
+END 
+*/
+
+
+// b!lgngcg.baf - player has installed the LG/NG/CG romance match (alternative match 1)
+
+/* Keldorn and Maria have reconciled. Sets the timer for the meltdown and sets RA to 1 */ 
+IF 
+    Global("B!KeldornRA","GLOBAL",0) 
+    Gender(Player1,FEMALE) 
+    Alignment(Player1,MASK_GOOD) 
+    Global("B!KeldornRomReturn","GLOBAL",1) 
+THEN 
+    RESPONSE #100 
+        SetGlobalTimer("B!KelTime","GLOBAL",FIVE_DAYS) 
+        SetGlobal("B!KeldornRomReturn","GLOBAL",2) 
+        SetGlobal("B!KeldornRA","GLOBAL",1) 
+END 
+

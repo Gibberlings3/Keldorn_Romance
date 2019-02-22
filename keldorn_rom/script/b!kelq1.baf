@@ -1,0 +1,33 @@
+
+// b!kelq1.baf - moves the party outside for the quest resolution 
+
+IF 
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        FadeToColor([20.0],0)
+        Wait(1) 
+        StorePartyLocations() 
+        ActionOverride("b!vakola",MoveBetweenAreas("b!aley",[377.654],9)) 
+        LeaveAreaLUAPanic("b!aley","",[517.589],2)
+        LeaveAreaLUA("b!aley","",[517.589],2)
+        ActionOverride(Player2,MoveBetweenAreas("b!aley",[473.555],2)
+        ActionOverride(Player3,MoveBetweenAreas("b!aley",[561.555],2)
+        ActionOverride(Player4,MoveBetweenAreas("b!aley",[521.518],2)
+        ActionOverride(Player5,MoveBetweenAreas("b!aley",[606.521],2)
+        ActionOverride(Player6,MoveBetweenAreas("b!aley",[564.584],2)
+        CreateCreature("b!zash",[335.653],9) 
+        CreateCreature("b!kmage1",[726.433],2) 
+        CreateCreature("b!kmage2",[650.391],2) 
+        CreateCreature("b!kmage3",[459.433],0) 
+        CreateCreature("b!kmage4",[385.713],9) 
+        Wait(1) 
+        MultiPlayerSync()
+        Explore()
+        Wait(1)
+        FadeFromColor([20.0],0)
+        MoveViewObject(Player1,INSTANT)
+        Wait(1)
+        ActionOverride("b!vakola",StartDialogue("b!vakola","Keldorn"))  
+END

@@ -1,0 +1,25 @@
+
+// b!bord1.baf - moves party to the boarding house 
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        FadeToColor([20.0],0)
+        Wait(1)
+        LeaveAreaLUAPanic("b!bord","",[533.339],2)
+        LeaveAreaLUA("b!bord","",[533.339],2)
+        ActionOverride(Player2,MoveBetweenAreas("b!bord",[458.335],2)
+        ActionOverride(Player3,MoveBetweenAreas("b!bord",[569.314],2)
+        ActionOverride(Player4,MoveBetweenAreas("b!bord",[512.301],2)
+        ActionOverride(Player5,MoveBetweenAreas("b!bord",[585.305],2)
+        ActionOverride(Player6,MoveBetweenAreas("b!bord",[539.265],2)
+        MultiPlayerSync()
+        Explore()
+        Wait(1)
+        FadeFromColor([20.0],0)
+        MoveViewObject(Player1,INSTANT)
+        Wait(1)
+        EndCutSceneMode() 
+END

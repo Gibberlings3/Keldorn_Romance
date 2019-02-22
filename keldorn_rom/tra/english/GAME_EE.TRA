@@ -1,0 +1,53 @@
+@50   = ~By far the oldest and most often used pole-arm, the halberd consists of a cleaver-like axe blade mounted on a staff averaging six feet in length.  The axe blade is balanced at the rear with a fluke, and surmounted by a sharp spike, usually of quadrangular design.  The fluke is sometimes replaced by a hook used to dismount cavalry.  A halberd can be best described as a cross between a spear and an axe.  
+
+STATISTICS:
+
+Damage:  1D10
+Damage type:  piercing
+Weight: 12
+Speed Factor: 9
+Proficiency Type: Halberd
+Type:  2-handed
+Requires: 13 Strength
+~
+@51   = ~Death is swift, and it is cold. Both can also be said of this halberd. Once, it belonged to Vakola, Keldorn's enemy, but now, it is yours.  
+
+STATISTICS:
+
+THAC0: +3 bonus
+Damage:  1D10 +2, +2 points of cold damage
+Damage type:  piercing
+Weight: 12
+Speed Factor: 7
+Proficiency Type: Halberd
+Type:  2-handed
+Requires: 13 Strength
+~
+
+@61   = ~The Scimitar is closely related to the saber, a single-edged curved sword with protective hilt.  A Scimitar has a greater curve and is tapered to an elongated, sharp point. The origins of the scimitar are largely unknown, though they have proven popular in the southern region of the Forgotten Realms.
+
+STATISTICS:
+
+Damage:  1D8
+Damage type:  Slashing
+Weight:  3
+Proficiency Type: Scimitar
+Speed Factor:  5
+Type:  1-handed
+Requires: 8 Strength
+~
+@62   = ~This scimitar is slender and dangerous, like the woman who once owned it. Besides being an exceptionally fast weapon, it makes the wielder slightly harder to hit.
+
+STATISTICS:
+
+THAC0 Bonus: +3 
+AC Bonus: +2 
+
+Damage:  1D8 +3
+Damage type:  Slashing
+Weight:  3
+Proficiency Type: Scimitar
+Speed Factor:  2
+Type:  1-handed
+Requires: 8 Strength
+~

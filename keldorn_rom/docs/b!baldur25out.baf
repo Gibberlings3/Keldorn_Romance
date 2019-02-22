@@ -1,0 +1,15 @@
+
+// b!baldur25out.baf - cancels outtakes cutscene for the pocket plane
+
+IF 
+    Global("B!KR_Outtakes","GLOBAL",1) 
+    OR(5) 
+        !Global("B!KeldornRA","GLOBAL",2) 
+        !AreaCheckObject("AR4500",Player1) 
+        !AreaCheckObject("AR4500","Keldorn") 
+        StateCheck("Keldorn",CD_STATE_NOTVALID) 
+        StateCheck(Player1,CD_STATE_NOTVALID) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KR_Outtakes","GLOBAL",0) 
+END 

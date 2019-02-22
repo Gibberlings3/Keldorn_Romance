@@ -1,0 +1,13 @@
+
+// b!kr4out.baf - Wyllim can't handle it
+
+IF
+  True()
+THEN
+  RESPONSE #100
+    CutSceneId("b!leona")  // 
+    Kill("b!krlboy") 
+    Wait(3)
+    StartDialogNoSet(Player1)
+END
+

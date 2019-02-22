@@ -1,0 +1,14 @@
+
+// b!ar0300.baf - ET AR0300.bcs - Spawns Zasheida 
+
+IF 
+    Exists("Keldorn") 
+    GlobalTimerExpired("B!KelQuestTime","GLOBAL") 
+    Global("B!KelQuest","GLOBAL",1) 
+    !StateCheck("Keldorn",CD_STATE_NOTVALID) 
+THEN 
+    RESPONSE #100 
+        CreateCreatureObject("b!zash","Keldorn",0,0,0) 
+        SetGlobal("B!KelQuest","GLOBAL",2) 
+        Continue() 
+END 

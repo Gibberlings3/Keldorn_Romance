@@ -1,0 +1,18 @@
+@0    = ~The Thumb has obligingly supplied you with directions to Zasheida's room. If you have a thief in your party, you might attempt to pick the lock. If not, you may have to resort to other means to gain entry.~
+@1    = ~You attempt to pick the lock.~
+@2    = ~You instruct <PLAYER2> to pick the lock.~
+@3    = ~You instruct <PLAYER3> to pick the lock.~
+@4    = ~You instruct <PLAYER4> to pick the lock.~
+@5    = ~You instruct <PLAYER5> to pick the lock.~
+@6    = ~You instruct <PLAYER6> to pick the lock.~
+@7    = ~You attempt to force the lock using brute strength.~
+@8    = ~You instruct <PLAYER2> to force the lock using brute strength.~
+@9    = ~You instruct <PLAYER3> to force the lock using brute strength.~
+@10   = ~You instruct <PLAYER4> to force the lock using brute strength.~
+@11   = ~You instruct <PLAYER5> to force the lock using brute strength.~
+@12   = ~You instruct <PLAYER6> to force the lock using brute strength.~
+@13   = ~You find the idea of breaking and entering distasteful, so you will have to find some other means to enter the room.~
+@14   = ~With no thieves or strong backs in your party, you will have to find some other means to enter the room.~
+@15   = ~The locks at the Sea's Bounty are meant to deter the curious, not to provide absolute security. The primitive lock opens easily.~
+
+@17   = ~Like all inns, the Sea's Bounty employs porters to clean guest rooms, to make minor repairs, and to perform tasks too strenuous for the chamber maids. Perhaps you can persuade one of them to loan you his key.~

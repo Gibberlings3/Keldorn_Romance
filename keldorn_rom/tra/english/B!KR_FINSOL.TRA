@@ -1,0 +1,16 @@
+@0    = ~To become a power that would walk the planes at will... I cannot imagine facing such a choice myself, <CHARNAME>, and I do not envy you the task.~ [KELD2515]
+@1    = ~Were the choice my own, however... I would not leave behind my beloved forever. I could not endure it.~ [BKELDSOL]
+@2    = ~Nor could I. I am not leaving you. Not now, not ever.~
+@3    = ~I am sorry that it has to be this way, but I know what I must do.~
+@4    = ~I wish I knew what to do.~
+@5    = ~Can this be true? I hardly dared hope...~
+@6    = ~My heart begs you to stay with me, but I must not make demands of you. You must do what you know to be right.~
+@7    = ~I understand. We knew this day would come.~
+@8    = ~You go to your destiny, my love, and my heart goes with you, even if I may not.~
+@9    = ~You must do what you know to be right. Wherever you go, my heart goes with you.~
+@10   = ~Then this must be our farewell. Know that I will live in the memory of our love, to the very end of my days.~
+@11   = ~Did I hear rightly? My love, I have no words to describe my joy! Beloved <CHARNAME>, how happy you make me!~
+
+/* new for version 4 */
+@12 = ~Were the choice my own, however... I would not leave behind both my children forever.  I could not endure it.  And the thought of dealing with the evil taint as you do... no, it would not be for me.~
+

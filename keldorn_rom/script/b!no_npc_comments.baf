@@ -1,0 +1,7 @@
+
+IF 
+    Global("B!NoNPCComments","GLOBAL",0) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!NoNPCComments","GLOBAL",1) 
+END 

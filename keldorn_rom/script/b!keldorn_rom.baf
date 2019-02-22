@@ -1,0 +1,239 @@
+
+// b!keldorn_rom.baf - romance-related BCS additions 
+
+/* Keldorn Returns to the party after Maria dumped him */ 
+/* Borrowed Jaheira's code from Harper Plot (Meronia) */ 
+IF 
+    Global("B!KeldornRomReturn","GLOBAL",6) 
+    Global("B!KeldornRA","GLOBAL",1) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KeldornRomReturn","GLOBAL",7) 
+        Dialogue(Player1)  
+END 
+
+/* Sets timer for Keldorn's family to respawn at his estate */ 
+
+IF 
+    GlobalGT("B!KeldornRomReturn","GLOBAL",1) 
+    Global("B!KelRomFamilyRespawn","GLOBAL",0) 
+THEN 
+    RESPONSE #100 
+        RealSetGlobalTimer("B!FamilyRespawn","GLOBAL",ONE_DAY) 
+        SetGlobal("B!KelRomFamilyRespawn","GLOBAL",1) 
+END 
+
+
+/* The timer has expired while Keldorn is in the party. Spawns a messenger */ 
+IF 
+    InParty(Myself) 
+    GlobalTimerExpired("B!KelTime","GLOBAL") 
+    Global("B!KeldornRomReturn","GLOBAL",2) 
+    AreaType(OUTDOOR) 
+    AreaType(CITY) 
+    !AreaCheck("AR2000") 
+    Global("B!KeldornRA","GLOBAL",1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+THEN 
+    RESPONSE #100 
+        CreateCreatureObject("b!kelmsg","Keldorn",0,0,0) 
+        SetGlobal("B!KeldornRomReturn","GLOBAL",3) 
+END 
+
+/* Change Keldorn's Bio if Maria leaves him */ 
+
+IF 
+    InParty(Myself) 
+    GlobalGT("B!KeldornRomReturn","GLOBAL",7) 
+    Global("B!KelRomChangeBio","GLOBAL",0) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        SetPlayerSound(Myself,%When asked about his past, KELDORN sighs and is forced to think for a moment before counting the number of years he has been a paladin of Torm in the service of the Most Noble Order of the Radiant Heart.  He has battled to protect the defenseless and punish the evil on more occasions than he can recall.  A seasoned veteran with the scars to prove it, Keldorn speaks proudly of the Order that has become his life.  Upon mention of his family, however, Keldorn's attention wanders and grows grim.  Duty is more important than personal considerations, he whispers harshly, so long as the Order has need of him.%,EXISTANCE5) 
+        SetGlobal("B!KelRomChangeBio","GLOBAL",1) 
+END 
+
+/* Keldorn cued to talk to the PC about the letter. */ 
+
+IF 
+    InParty(Myself) 
+    Global("B!KeldornRomReturn","GLOBAL",4) 
+    Global("B!KeldornRA","GLOBAL",1) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+THEN 
+    RESPONSE #100 
+        StartDialogueNoSet(Player1) 
+END 
+
+IF 
+    InParty(Myself) 
+    Global("B!KelLT","GLOBAL",0) 
+    Global("B!KeldornRomReturn","GLOBAL",8) 
+    Global("B!KeldornRA","GLOBAL",1) 
+THEN 
+    RESPONSE #100 
+        RealSetGlobalTimer("B!KelTime","GLOBAL",%KEL_TIME%) 
+        SetGlobal("B!KelLT","GLOBAL",1) 
+END 
+
+/* Sets post-confession timer */ 
+
+IF 
+    InParty(Myself) 
+    Global("B!KelLT","GLOBAL",71) 
+    Global("B!KelNT","GLOBAL",0) 
+    Global("B!KeldornRA","GLOBAL",1) 
+THEN 
+    RESPONSE #100 
+        SetGlobalTimer("B!KelNightTime","GLOBAL",FOUR_DAYS) 
+        SetGlobal("B!KelNT","GLOBAL",1) 
+END 
+
+/* PC Wounded */ 
+
+IF 
+    InParty(Myself) 
+    HPPercentLT(Player1,80) 
+    GlobalGT("B!KelLT","GLOBAL",70) 
+    Global("B!KeldornRA","GLOBAL",1) 
+    Global("B!KelPCWounded","GLOBAL",0) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KelPCWounded","GLOBAL",1) 
+END 
+IF 
+    InParty(Myself) 
+    Global("B!KeldornRA","GLOBAL",1) 
+    Global("B!KelPCWounded","GLOBAL",1) 
+    CombatCounter(0) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+THEN 
+    RESPONSE #100 
+        PlaySong(0) 
+        PlaySound("bkelsong") 
+        StartDialogueNoSet(Player1) 
+END 
+
+IF 
+    InParty(Myself) 
+    Global("PlayerLooksLikeDrow","GLOBAL",1) 
+    Global("B!KeldornDrowChange","GLOBAL",0) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KeldornDrowChange","GLOBAL",1) 
+END 
+
+IF 
+    InParty(Myself) 
+    GlobalGT("Chapter","GLOBAL",%bg2_chapter_5%) 
+    Global("B!KeldornDrowChange","GLOBAL",1) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KeldornDrowChange","GLOBAL",2) 
+END 
+
+
+/* Romance talks */ 
+
+IF 
+    InParty(Myself) 
+    RealGlobalTimerExpired("B!KelTime","GLOBAL") 
+    Global("B!KeldornRA","GLOBAL",1) 
+    !AreaType(DUNGEON) 
+    !Global("Chapter","GLOBAL",%bg2_chapter_5%) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+    OR(28) 
+        Global("B!KelLT","GLOBAL",1) 
+        Global("B!KelLT","GLOBAL",3) 
+        Global("B!KelLT","GLOBAL",5) 
+        Global("B!KelLT","GLOBAL",7) 
+        Global("B!KelLT","GLOBAL",9) 
+        Global("B!KelLT","GLOBAL",17) 
+        Global("B!KelLT","GLOBAL",19) 
+        Global("B!KelLT","GLOBAL",21) 
+        Global("B!KelLT","GLOBAL",23) 
+        Global("B!KelLT","GLOBAL",25) 
+        Global("B!KelLT","GLOBAL",27) 
+        Global("B!KelLT","GLOBAL",29) 
+        Global("B!KelLT","GLOBAL",31) 
+        Global("B!KelLT","GLOBAL",33) 
+        Global("B!KelLT","GLOBAL",35) 
+        Global("B!KelLT","GLOBAL",37) 
+        Global("B!KelLT","GLOBAL",39) 
+        Global("B!KelLT","GLOBAL",41) 
+        Global("B!KelLT","GLOBAL",43) 
+        Global("B!KelLT","GLOBAL",45) 
+        Global("B!KelLT","GLOBAL",47) 
+        Global("B!KelLT","GLOBAL",49) 
+        Global("B!KelLT","GLOBAL",51) 
+        Global("B!KelLT","GLOBAL",57) 
+        Global("B!KelLT","GLOBAL",59) 
+        Global("B!KelLT","GLOBAL",61) 
+        Global("B!KelLT","GLOBAL",63) 
+        Global("B!KelLT","GLOBAL",65) 
+THEN 
+    RESPONSE #100 
+        IncrementGlobal("B!KelLT","GLOBAL",1) 
+END 
+
+IF 
+    InParty(Myself) 
+    RealGlobalTimerExpired("B!KelTime","GLOBAL") 
+    Global("B!KeldornRA","GLOBAL",1) 
+    !AreaType(DUNGEON) 
+    !Global("Chapter","GLOBAL",%bg2_chapter_5%) 
+    !StateCheck(Myself,CD_STATE_NOTVALID) 
+    !StateCheck(Player1,CD_STATE_NOTVALID) 
+    CombatCounter(0) 
+    !See([ENEMY]) 
+    OR(31) 
+        Global("B!KelLT","GLOBAL",2) 
+        Global("B!KelLT","GLOBAL",4) 
+        Global("B!KelLT","GLOBAL",6) 
+        Global("B!KelLT","GLOBAL",8) 
+        Global("B!KelLT","GLOBAL",10) 
+        Global("B!KelLT","GLOBAL",14) 
+        Global("B!KelLT","GLOBAL",18) 
+        Global("B!KelLT","GLOBAL",20) 
+        Global("B!KelLT","GLOBAL",22) 
+        Global("B!KelLT","GLOBAL",24) 
+        Global("B!KelLT","GLOBAL",26) 
+        Global("B!KelLT","GLOBAL",28) 
+        Global("B!KelLT","GLOBAL",30) 
+        Global("B!KelLT","GLOBAL",32) 
+        Global("B!KelLT","GLOBAL",34) 
+        Global("B!KelLT","GLOBAL",36) 
+        Global("B!KelLT","GLOBAL",38) 
+        Global("B!KelLT","GLOBAL",40) 
+        Global("B!KelLT","GLOBAL",42) 
+        Global("B!KelLT","GLOBAL",44) 
+        Global("B!KelLT","GLOBAL",46) 
+        Global("B!KelLT","GLOBAL",48) 
+        Global("B!KelLT","GLOBAL",50) 
+        Global("B!KelLT","GLOBAL",52) 
+        Global("B!KelLT","GLOBAL",56) 
+        Global("B!KelLT","GLOBAL",58) 
+        Global("B!KelLT","GLOBAL",60) 
+        Global("B!KelLT","GLOBAL",62) 
+        Global("B!KelLT","GLOBAL",64) 
+        Global("B!KelLT","GLOBAL",66) 
+        Global("B!KelLT","GLOBAL",70) 
+THEN 
+    RESPONSE #100 
+        PlaySong(0) 
+        PlaySound("bkelsong") 
+        StartDialogueNoSet(Player1) 
+END 

@@ -1,0 +1,98 @@
+
+IF 
+    InParty(Myself) 
+    Global("B!KelRomRESex","LOCALS",0) 
+    OR(34) 
+        Global("B!GavSex","GLOBAL",1) 
+        Global("c-ReySex","GLOBAL",1) 
+        Global("AnomenRomanceActive","GLOBAL",2) 
+        Global("EdwinRomanceActive","GLOBAL",2) 
+        Global("c-AranSex","GLOBAL",1) 
+        Global("ADAngelRomanceActive","GLOBAL",2)
+        Global("C#AjantisRomanceActive","GLOBAL",2) 
+        Global("J#KelseyRomanceActive","GLOBAL",2) 
+        GlobalGT("SolaTalk","GLOBAL",14) 
+        Global("TsujathaRomanceActive","GLOBAL",2)
+        Global("RE_BjorninSex","GLOBAL",1) 
+        Global("RE_CambionSex","GLOBAL",1) 
+        Global("RE_CoranSex","GLOBAL",1) 
+        Global("RE_DesharikSex","GLOBAL",1) 
+        Global("RE_EdwinSex","GLOBAL",1) 
+        Global("RE_EldothSex","GLOBAL",1) 
+        Global("RE_GaelanSex","GLOBAL",1) 
+        Global("RE_GarrenSex","GLOBAL",1) 
+        Global("RE_HendakSex","GLOBAL",1) 
+        Global("RE_JarlaxleSex","GLOBAL",1) 
+        Global("RE_LaranSex","GLOBAL",1) 
+        Global("RE_MekrathSex","GLOBAL",1) 
+        Global("RE_RenalSex","GLOBAL",1) 
+        Global("RE_RibaldSex","GLOBAL",1) 
+        Global("RE_SaemonSex","GLOBAL",1) 
+        Global("RE_SolaufeinSex","GLOBAL",1) 
+        Global("RE_TalakSex","GLOBAL",1) 
+        Global("RE_TeosSex","GLOBAL",1) 
+        Global("RE_YoshimoSex","GLOBAL",1) 
+        Global("RE_CerndSex","GLOBAL",1) 
+/* BGII:EE */
+	Global("OHD_dornsex","GLOBAL",1)
+	Global("DornRomanceActive","GLOBAL",2)
+	Global("HexxatRomanceActive","GLOBAL",2)
+	Global("RasaadRomanceActive","GLOBAL",2)
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KelRomRESex","LOCALS",1) 
+END 
+
+IF 
+    InParty(Myself) 
+    Global("B!KR_REwilling","LOCALS",0) 
+    OR(31) 
+        Global("B!GavSex","GLOBAL",1) 
+        Global("c-ReySex","GLOBAL",1) 
+        Global("AnomenRomanceActive","GLOBAL",2) 
+        Global("EdwinRomanceActive","GLOBAL",2) 
+        Global("c-AranSex","GLOBAL",1) 
+        Global("ADAngelRomanceActive","GLOBAL",2)
+        Global("C#AjantisRomanceActive","GLOBAL",2) 
+        Global("J#KelseyRomanceActive","GLOBAL",2) 
+        GlobalGT("SolaTalk","GLOBAL",14) 
+        Global("TsujathaRomanceActive","GLOBAL",2)
+        Global("RE_BjorninSex","GLOBAL",1) 
+        Global("RE_CambionSex","GLOBAL",1) 
+        Global("RE_CoranSex","GLOBAL",1) 
+        Global("RE_EdwinSex","GLOBAL",1) 
+        Global("RE_EldothSex","GLOBAL",1) 
+        Global("RE_GarrenSex","GLOBAL",1) 
+        Global("RE_HendakSex","GLOBAL",1) 
+        Global("RE_JarlaxleSex","GLOBAL",1) 
+        Global("RE_LaranSex","GLOBAL",1) 
+        Global("RE_MekrathSex","GLOBAL",1) 
+        Global("RE_RenalSex","GLOBAL",1) 
+        Global("RE_RibaldSex","GLOBAL",1) 
+        Global("RE_SaemonSex","GLOBAL",1) 
+        Global("RE_SolaufeinSex","GLOBAL",1) 
+        Global("RE_TeosSex","GLOBAL",1) 
+        Global("RE_YoshimoSex","GLOBAL",1) 
+        Global("RE_CerndSex","GLOBAL",1) 
+/* BGII:EE */
+	Global("OHD_dornsex","GLOBAL",1)
+	Global("DornRomanceActive","GLOBAL",2)
+	Global("HexxatRomanceActive","GLOBAL",2)
+	Global("RasaadRomanceActive","GLOBAL",2)
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KR_REwilling","LOCALS",1) 
+END 
+
+IF 
+    InParty(Myself) 
+    Global("B!KR_REcoerced","LOCALS",0) 
+    OR(3) 
+        Global("RE_DesharikSex","GLOBAL",1) 
+        Global("RE_GaelanSex","GLOBAL",1) 
+        Global("RE_TalakSex","GLOBAL",1) 
+THEN 
+    RESPONSE #100 
+        SetGlobal("B!KR_REcoerced","LOCALS",1) 
+END 
+    

@@ -1,0 +1,21 @@
+
+// b!zash3.baf - Zasheida and the PC return to the common room 
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        Wait(1)
+        FadeToColor([20.0],0)
+        Wait(1)
+        ActionOverride("b!zash",MoveBetweenAreas("AR0313",[617.314],3))
+        Wait(1)
+        RestorePartyLocations()
+        MultiPlayerSync()
+        Wait(1)
+        FadeFromColor([20.0],0)
+        MoveViewObject(Player1,INSTANT)
+        Wait(1)
+        ActionOverride("b!zash",StartDialogueNoSet(Player1)) 
+END

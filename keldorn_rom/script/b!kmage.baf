@@ -1,0 +1,200 @@
+
+// b!kmage.baf - mage combat script 
+/* 4,4,3,2,2 */ 
+
+IF 
+    Allegiance(Myself,NEUTRAL) 
+    Global("Hostile","LOCALS",0) 
+    OR(2) 
+        Global("B!KelQuestFight","GLOBAL",1) 
+        Global("B!KelQuestBetray","GLOBAL",1) 
+THEN 
+    RESPONSE #100 
+        Enemy() 
+        SetGlobal("Hostile","LOCALS",0) 
+END 
+
+IF 
+	Allegiance(Myself,ENEMY) 
+    Global("Buff","LOCALS",0) 
+THEN 
+    RESPONSE #100 
+        ReallyForceSpell(Myself,WIZARD_STONE_SKIN)    //5
+        ReallyForceSpell(Myself,WIZARD_MINOR_GLOBE_OF_INVULNERABILITY) //4 
+        ReallyForceSpell(Myself,WIZARD_MIRROR_IMAGE)  //2 
+        ReallyForceSpell(Myself,WIZARD_VOCALIZE)  //2
+        SetGlobal("Buff","LOCALS",1) 
+END 
+
+IF 
+    HPPercentLT(Myself,50) 
+    !GlobalTimerNotExpired("Potion","LOCALS") 
+    HasItem("potn08",Myself) 
+THEN 
+    RESPONSE #100 
+        UseItem("potn08",Myself) 
+        SetGlobalTimer("Potion","LOCALS",THREE_ROUNDS) 
+END 
+
+IF 
+    See(NearestEnemyOf(Myself)) 
+    !GlobalTimerNotExpired("CastSpell","LOCALS") 
+    Global("RoECast","LOCALS",0) 
+    OR(3) 
+        Class(NearestEnemyOf(Myself),FIGHTER_ALL) 
+        Class(NearestEnemyOf(Myself),PALADIN_ALL) 
+        Class(NearestEnemyOf(Myself),RANGER_ALL) 
+THEN 
+    RESPONSE #100 
+        ForceSpell(NearestEnemyOf(Myself),WIZARD_RAY_OF_ENFEEBLEMENT) //2
+        SetGlobalTimer("CastSpell","LOCALS",ONE_ROUND) 
+        SetGlobal("RoECast","LOCALS",1) 
+END 
+
+IF 
+    See(NearestEnemyOf(Myself)) 
+    !GlobalTimerNotExpired("CastSpell","LOCALS") 
+    Global("FlameArrowCast","LOCALS",0) 
+THEN 
+    RESPONSE #100 
+        ForceSpell(NearestEnemyOf(Myself),WIZARD_FLAME_ARROW) //3 
+        SetGlobalTimer("CastSpell","LOCALS",ONE_ROUND) 
+        SetGlobal("FlameArrowCast","LOCALS",1) 
+END 
+
+IF 
+    See(NearestEnemyOf(Myself)) 
+    Class(NearestEnemyOf(Myself),MAGE_ALL) 
+    !GlobalTimerNotExpired("CastSpell","LOCALS") 
+    Global("SpellThrust","LOCALS",0) 
+THEN 
+    RESPONSE #100 
+        ForceSpell(NearestEnemyOf(Myself),WIZARD_SPELL_THRUST) //3
+        SetGlobalTimer("CastSpell","LOCALS",ONE_ROUND) 
+        SetGlobal("SpellThrust","LOCALS",1) 
+END 
+
+IF 
+    See(SecondNearestEnemyOf(Myself)) 
+    Class(SecondNearestEnemyOf(Myself),MAGE_ALL) 
+    !GlobalTimerNotExpired("CastSpell","LOCALS") 
+    Global("SpellThrust","LOCALS",0) 
+THEN 
+    RESPONSE #100 
+        ForceSpell(SecondNearestEnemyOf(Myself),WIZARD_SPELL_THRUST) //3
+        SetGlobalTimer("CastSpell","LOCALS",ONE_ROUND) 
+        SetGlobal("SpellThrust","LOCALS",1) 
+END 
+
+IF 
+    See(ThirdNearestEnemyOf(Myself)) 
+    Class(ThirdNearestEnemyOf(Myself),MAGE_ALL) 
+    !GlobalTimerNotExpired("CastSpell","LOCALS") 
+    Global("SpellThrust","LOCALS",0) 
+THEN 
+    RESPONSE #100 
+        ForceSpell(ThirdNearestEnemyOf(Myself),WIZARD_SPELL_THRUST) //3
+        SetGlobalTimer("CastSpell","LOCALS",ONE_ROUND) 
+        SetGlobal("SpellThrust","LOCALS",1) 
+END 
+
+IF 
+    See(FourthNearestEnemyOf(Myself)) 
+    Class(FourthNearestEnemyOf(Myself),MAGE_ALL) 
+    !GlobalTimerNotExpired("CastSpell","LOCALS") 
+    Global("SpellThrust","LOCALS",0) 
+THEN 
+    RESPONSE #100 
+        ForceSpell(FourthNearestEnemyOf(Myself),WIZARD_SPELL_THRUST) //3
+        SetGlobalTimer("CastSpell","LOCALS",ONE_ROUND) 
+        SetGlobal("SpellThrust","LOCALS",1) 
+END 
+
+IF 
+    See(FifthNearestEnemyOf(Myself)) 
+    Class(FifthNearestEnemyOf(Myself),MAGE_ALL) 
+    !GlobalTimerNotExpired("CastSpell","LOCALS") 
+    Global("SpellThrust","LOCALS",0) 
+THEN 
+    RESPONSE #100 
+        ForceSpell(FifthNearestEnemyOf(Myself),WIZARD_SPELL_THRUST) //3
+        SetGlobalTimer("CastSpell","LOCALS",ONE_ROUND) 
+        SetGlobal("SpellThrust","LOCALS",1) 
+END 
+
+IF 
+    See(SixthNearestEnemyOf(Myself)) 
+    Class(SixthNearestEnemyOf(Myself),MAGE_ALL) 
+    !GlobalTimerNotExpired("CastSpell","LOCALS") 
+    Global("SpellThrust","LOCALS",0) 
+THEN 
+    RESPONSE #100 
+        ForceSpell(SixthNearestEnemyOf(Myself),WIZARD_SPELL_THRUST) //3
+        SetGlobalTimer("CastSpell","LOCALS",ONE_ROUND) 
+        SetGlobal("SpellThrust","LOCALS",1) 
+END 
+
+IF 
+    See(NearestEnemyOf(Myself)) 
+    !GlobalTimerNotExpired("CastSpell","LOCALS") 
+    Global("HorrorCast","LOCALS",0) 
+THEN 
+    RESPONSE #100 
+        ForceSpell(NearestEnemyOf(Myself),WIZARD_HORROR) //2
+        SetGlobalTimer("CastSpell","LOCALS",ONE_ROUND) 
+        SetGlobal("HorrorCast","LOCALS",1) 
+END 
+
+IF 
+    See(NearestEnemyOf(Myself)) 
+    !GlobalTimerNotExpired("CastSpell","LOCALS") 
+    Global("ChaosCast","LOCALS",0) 
+THEN 
+    RESPONSE #100 
+        ForceSpell(NearestEnemyOf(Myself),WIZARD_CHAOS) //5 
+        SetGlobalTimer("CastSpell","LOCALS",ONE_ROUND) 
+        SetGlobal("ChaosCast","LOCALS",1) 
+END 
+
+IF 
+    See(NearestEnemyOf(Myself))  
+    !GlobalTimerNotExpired("CastSpell","LOCALS") 
+    GlobalLT("MMCast","LOCALS",5) 
+THEN 
+    RESPONSE #100 
+        ForceSpell(NearestEnemyOf(Myself),WIZARD_MAGIC_MISSILE) 
+        SetGlobalTimer("CastSpell","LOCALS",ONE_ROUND) 
+        IncrementGlobal("MMCast","LOCALS",1) 
+END 
+
+IF 
+    See(NearestEnemyOf(Myself)) 
+    !GlobalTimerNotExpired("CastSpell","LOCALS") 
+    Global("HoldCast","LOCALS",0) 
+THEN 
+    RESPONSE #100 
+        ForceSpell(NearestEnemyOf(Myself),WIZARD_HOLD_PERSON) //3 
+        SetGlobalTimer("CastSpell","LOCALS",ONE_ROUND) 
+        SetGlobal("HoldCast","LOCALS",1) 
+END 
+
+IF 
+    See(NearestEnemyOf(Myself))  
+    !GlobalTimerNotExpired("CastSpell","LOCALS") 
+    Global("MMCast","LOCALS",5) 
+    Global("MMMCast","LOCALS",0) 
+THEN 
+    RESPONSE #100 
+        ForceSpell(NearestEnemyOf(Myself),WIZARD_MAGIC_MISSILE) 
+        SetGlobalTimer("CastSpell","LOCALS",ONE_ROUND) 
+        SetGlobal("MMMCast","LOCALS",1) 
+END 
+
+IF	
+    See(NearestEnemyOf(Myself))
+	!StateCheck(Myself,STATE_INVISIBLE)
+THEN
+	RESPONSE #100
+	EquipMostDamagingMelee()
+	AttackReevaluate(NearestEnemyOf(Myself),15) 
+END

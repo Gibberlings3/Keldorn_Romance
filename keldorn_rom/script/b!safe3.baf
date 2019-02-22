@@ -1,0 +1,23 @@
+
+// b!safe3.baf - initiate safe house combat 
+
+IF 
+    True() 
+THEN 
+    RESPONSE #100 
+        CutSceneId(Player1) 
+        ActionOverride("b!kbutlr",ForceSpell(Myself,DRYAD_TELEPORT)) 
+        Wait(2) 
+        CreateCreatureDoor("b!kgard1",[934.336],14) 
+        CreateCreatureDoor("b!thef1",[1029.458],10) 
+        CreateCreatureDoor("b!kgard2",[880.343],12) 
+        CreateCreatureDoor("b!kthef2",[759.497],11) 
+        CreateCreatureDoor("b!kgard3",[721.448],11) 
+        CreateCreatureDoor("b!kgard4",[694.409],0) 
+        Wait(1) 
+        CreateCreatureDoor("b!kbtlr2",[704.505],11) 
+        Wait(1) 
+        ActionOverride("b!kbtlr2",Enemy()) 
+        EndCutSceneMode() 
+END 
+        

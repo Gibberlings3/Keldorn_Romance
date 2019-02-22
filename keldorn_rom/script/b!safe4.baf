@@ -1,0 +1,25 @@
+
+// b!safe4.baf - Gets party out of safe house after juggling fiasco 
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        FadeToColor([20.0],0)
+        Wait(1)
+        LeaveAreaLUAPanic("AR1000","",[2478.255],0)
+        LeaveAreaLUA("AR1000","",[2478.255],0)
+        ActionOverride(Player2,MoveBetweenAreas("AR1000",[2527.210],0)
+        ActionOverride(Player3,MoveBetweenAreas("AR1000",[2451.210],0)
+        ActionOverride(Player4,MoveBetweenAreas("AR1000",[2478.173],0)
+        ActionOverride(Player5,MoveBetweenAreas("AR1000",[2419.193],0)
+        ActionOverride(Player6,MoveBetweenAreas("AR1000",[2450.161],0)
+        MultiPlayerSync()
+        Explore()
+        Wait(1)
+        FadeFromColor([20.0],0)
+        MoveViewObject(Player1,INSTANT)
+        Wait(1)
+        ActionOverride("Keldorn",StartDialogueNoSet(Player1)) 
+END
