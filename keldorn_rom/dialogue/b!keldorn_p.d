@@ -81,12 +81,12 @@ END
 
 IF ~~ p3 
 SAY #10785 /* ~I want to forget this day. I want to wipe it from my mind forever. Help me do that.~ */
-IF ~~ THEN DO ~JoinParty()~ EXIT 
+IF ~~ THEN DO ~SetGlobal("KeldornLeave","GLOBAL",0) JoinParty()~ EXIT 
 END 
 
 IF ~~ p4 
 SAY @27 
-IF ~~ THEN DO ~SetGlobal("KickedOut","LOCALS",1) 
+IF ~~ THEN DO ~SetGlobal("KeldornLeave","GLOBAL",0) SetGlobal("KickedOut","LOCALS",1) 
       SetGlobal("B!KeldornRA","GLOBAL",3) 
       EscapeAreaMove("AR0903",%x-y-face%)~ EXIT 
 END 

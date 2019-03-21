@@ -1,6 +1,6 @@
 berelinde's Keldorn Romance
 
-Version 4
+Version 5
 Languages: English
 Platforms: Windows, Linux, OSX
 
@@ -21,7 +21,19 @@ IX.    Version History
 I.     Overview
 ==================================================
 
-This mod adds a romance for female PCs and a quest for Keldorn.
+This mod introduces a romance for the original BioWare NPC Keldorn. It is compatible with all BGII games: original BGII, BGII:EE, BGT, and EET.
+
+He's loyal. He's brave. He's... single?
+
+Life is an uncertain thing, and changes come when we least expect them.
+
+This mod offers a chance to romance Athkatla's newest... and most reluctant... bachelor. All relationships take work, and this one takes more than most, but the rewards are great, for those patient enough to endure the trials.
+
+This romance is not for everyone. It is certainly not a romance for the hasty. When it begins, Keldorn is grieving after the collapse of his 20-year marriage, and it takes him a long, long time to recover. It deals with mature themes, the real consequences of rejection and recovery, and some players may not want to go through all that, no matter how devoted the would-be love interest becomes in Throne of Bhaal. It is also very, very long, with 35+ talks in Shadows of Amn, though the talks are spaced more closely together to compensate for this.
+
+To begin the Keldorn Romance, you must allow Keldorn and Maria to reconcile. He will only consider himself free if his marriage to Maria is legally ended, and imprisoning Maria will only separate them, not divorce them. Also, Maria's incarceration might present childcare issues that would be impossible to overcome.
+
+The mod also features a quest for all PCs, romanced or not, though that, too, requires a reconcilliation between Keldorn and Maria.
 
 
 ==================================================
@@ -155,6 +167,14 @@ Feel free to interject into quest or romance dialogue, or comment upon it in you
 ==================================================
 IX.    Version History
 ==================================================
+
+Version 5
+-Keldorn and Imoen's interjections should not loop at tree of life
+-Keldorn should have correct kickout dialogue after family events finished
+-new optional component: chose romance timer. User input upon installing the main component removed (removed ACTION_READLN)
+-renamed setup-keldorn_rom.tp2 to keldorn_rom.tp2
+-added keldorn_rom.ini with mod info metadata
+-update to WeiDU v246
 
 Version 4
 -first Keldorn-Viconia banter will no longer repeat
