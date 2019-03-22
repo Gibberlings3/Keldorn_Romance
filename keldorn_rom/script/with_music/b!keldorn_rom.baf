@@ -79,7 +79,7 @@ IF
     Global("B!KeldornRA","GLOBAL",1) 
 THEN 
     RESPONSE #100 
-        RealSetGlobalTimer("B!KelTime","GLOBAL",%KEL_TIME%) 
+        RealSetGlobalTimer("B!KelTime","GLOBAL",1800) 
         SetGlobal("B!KelLT","GLOBAL",1) 
 END 
 

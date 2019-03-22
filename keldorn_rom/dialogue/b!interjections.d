@@ -168,46 +168,6 @@ END
 
 /* Tree of Life */ 
 
-/*
-ADD_TRANS_TRIGGER PLAYER1 33 ~!GlobalGT("B!KeldornRomReturn","GLOBAL",7)~ DO 12 
-ADD_TRANS_TRIGGER HAERDAJ 149 ~!GlobalGT("B!KeldornRomReturn","GLOBAL",7)~ DO 12 
-ADD_TRANS_TRIGGER EDWINJ 160 ~!GlobalGT("B!KeldornRomReturn","GLOBAL",7)~ DO 12 
-ADD_TRANS_TRIGGER JANJ 181 ~!GlobalGT("B!KeldornRomReturn","GLOBAL",7)~ DO 12 
-ADD_TRANS_TRIGGER MAZZYJ 199 ~!GlobalGT("B!KeldornRomReturn","GLOBAL",7)~ DO 12 
-ADD_TRANS_TRIGGER VALYGARJ 106 ~!GlobalGT("B!KeldornRomReturn","GLOBAL",7)~ DO 12 
-ADD_TRANS_TRIGGER MINSCJ 209 ~!GlobalGT("B!KeldornRomReturn","GLOBAL",7)~ DO 12 
-ADD_TRANS_TRIGGER IMOEN2J 38 ~!GlobalGT("B!KeldornRomReturn","GLOBAL",7)~ DO 12 
-
-INTERJECT PLAYER1 33 tree.no_rom 
-== PLAYER1 IF ~InParty("Keldorn") 
-      InMyArea("Keldorn") 
-      !StateCheck("Keldorn",CD_STATE_NOTVALID) 
-      GlobalGT("B!KeldornRomReturn","GLOBAL",7) 
-      !Global("B!KeldornRA","GLOBAL",1)~ THEN @32 
-END 
-++ @33 EXTERN KELDORJ 248 
-++ @34 EXTERN ~KELDORJ~ 248
-++ @35 EXTERN ~KELDORJ~ 248
-
-INTERJECT PLAYER1 33 tree.rom 
-== PLAYER1 IF ~InParty("Keldorn") 
-      InMyArea("Keldorn") 
-      !StateCheck("Keldorn",CD_STATE_NOTVALID) 
-      GlobalGT("B!KeldornRomReturn","GLOBAL",7) 
-      Global("B!KeldornRA","GLOBAL",1)~ THEN @36 
-END 
-++ @37 EXTERN KELDORJ tree.rom.1 
-
-APPEND KELDORJ 
-
-IF ~~ tree.rom.1 
-SAY @38 
-COPY_TRANS PLAYER1 33
-END
-END 
-
-*/
-
 
 /* prevent original interjection to run if romance ones do */
 
@@ -244,7 +204,7 @@ APPEND KELDORJ
 
 IF ~~ tree.rom.1 
 SAY @38 
-COPY_TRANS PLAYER1 33
+COPY_TRANS KELDORJ 248  //lets the remaining NPCs speak. Using PLAYER1 33 goes into a loop!
 END
 END 
 

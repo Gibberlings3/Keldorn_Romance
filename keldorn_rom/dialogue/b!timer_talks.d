@@ -3443,10 +3443,10 @@ END
 
 IF WEIGHT #-1 ~Global("B!KelLT","GLOBAL",56)~ THEN BEGIN K28 
 SAY @1172 
-++ @1173 DO ~SetGlobal("B!KelLT","GLOBAL",57) RealSetGlobalTimer("B!KelTime","GLOBAL",57)~ + K28.1 
-++ @1174 DO ~SetGlobal("B!KelLT","GLOBAL",57) RealSetGlobalTimer("B!KelTime","GLOBAL",57)~ + K28.2 
-++ @1175 DO ~SetGlobal("B!KelLT","GLOBAL",57) RealSetGlobalTimer("B!KelTime","GLOBAL",57)~ + K28.3 
-++ @1176 DO ~SetGlobal("B!KelLT","GLOBAL",57) RealSetGlobalTimer("B!KelTime","GLOBAL",57)~ + K28.4 
+++ @1173 DO ~SetGlobal("B!KelLT","GLOBAL",57) RealSetGlobalTimer("B!KelTime","GLOBAL",%KEL_TIME%)~ + K28.1 
+++ @1174 DO ~SetGlobal("B!KelLT","GLOBAL",57) RealSetGlobalTimer("B!KelTime","GLOBAL",%KEL_TIME%)~ + K28.2 
+++ @1175 DO ~SetGlobal("B!KelLT","GLOBAL",57) RealSetGlobalTimer("B!KelTime","GLOBAL",%KEL_TIME%)~ + K28.3 
+++ @1176 DO ~SetGlobal("B!KelLT","GLOBAL",57) RealSetGlobalTimer("B!KelTime","GLOBAL",%KEL_TIME%)~ + K28.4 
 END 
 
 IF ~~ K28.1 
