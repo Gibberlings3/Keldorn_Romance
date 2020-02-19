@@ -2,17 +2,21 @@
 
 IF
 	Global("B!KeldornIgnoreAnomenRom","GLOBAL",0) 
+	Global("B!KeldornIgnoreAnoRomOnce","LOCALS",0) 
 	GlobalGT("LoveTalk","LOCALS",27)
 THEN
 	RESPONSE #100
 		SetGlobal("B!KeldornIgnoreAnomenRom","GLOBAL",1)
+		SetGlobal("B!KeldornIgnoreAnoRomOnce","LOCALS",1) 
 END
 
 /* Anomen asked for love night - Keldorn won't ignore this */
 IF
 	Global("B!KeldornIgnoreAnomenRom","GLOBAL",1)
+	Global("B!KeldornIgnoreAnoRomNot","LOCALS",0) 
 	GlobalGT("LoveTalk","LOCALS",31)
 THEN
 	RESPONSE #100
 		SetGlobal("B!KeldornIgnoreAnomenRom","GLOBAL",0)
+		SetGlobal("B!KeldornIgnoreAnoRomNot","LOCALS",1) 
 END

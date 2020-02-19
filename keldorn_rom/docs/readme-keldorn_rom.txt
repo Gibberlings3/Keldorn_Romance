@@ -1,6 +1,6 @@
 berelinde's Keldorn Romance
 
-Version 5
+Version 6
 Languages: English
 Platforms: Windows, Linux, OSX
 
@@ -167,6 +167,11 @@ Feel free to interject into quest or romance dialogue, or comment upon it in you
 ==================================================
 IX.    Version History
 ==================================================
+
+Version 6
+-Anomen should not stutter after his love night (added check variables to b!anomen_romfix.baf to prevent looping of scriptblocks).
+-item description now list special abilities under "equipped abilities".
+-Zasheida should not be present elsewhere if already killed. (Added DestroySelf() to her script if she is dead, which is not the most elegant way of solving this but the most efficient without having to dig through the whole quest path.)
 
 Version 5
 -Keldorn and Imoen's interjections should not loop at tree of life

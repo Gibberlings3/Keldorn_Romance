@@ -3,6 +3,7 @@
 
 IF 
     Exists("Keldorn") 
+    !Dead("b!zash")
     GlobalTimerExpired("B!KelQuestTime","GLOBAL") 
     Global("B!KelQuest","GLOBAL",1) 
     !StateCheck("Keldorn",CD_STATE_NOTVALID) 

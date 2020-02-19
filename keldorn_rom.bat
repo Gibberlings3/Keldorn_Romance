@@ -5,13 +5,13 @@ REM /* this initializes the values for the different variables referenced in com
 call "%~dp0..\ModPackaging\utilities\ie_games.bat"
 
 REM /* MODIFY: set the values of the 3 variables below to reflect the current mod version */
-set "mod_name=Keldorn Romance"
-set mod_version=v4
+set "mod_name=berelinde's Keldorn Romance"
+set mod_version=v6
 set mod_folder=keldorn_rom
 
 REM /* MODIFY: list here which IE games the mod is compatible with, from this list of possibilities: */
 REM /* %bg1%, %bg2%, %bgt%, %tutu%, %bgee%, %bgiiee%, %iwd1%, %iwdee%, %iwd2%, %iwd2ee%, %iwd-in-bg2%, %pst%, %pstee% */
-set "compatible_games=%bg2%, %bgt%, %bgiiee%, or %eet%"
+set "compatible_games=%tob%, %bgt%, %bg2ee%, or %eet%"
 
 REM /* MODIFY: these variables have sensible default values but they may need to be tweaked to match your particular mod */
 REM /* the ico_folder is where your .ico files are stored, which is usually the mod's backup or style folder */
@@ -22,12 +22,12 @@ REM /* the mod_readme link should point to the online readme and work fine as-is
 set ico_folder=%mod_folder%\install
 set audio_folder=%mod_folder%\audio
 set tispack_folder=%mod_folder%\tiz
-set tile2ee_folder=%mod_folder%\tools\tile2ee
 set iconv_folder=%mod_folder%\tra\iconv
 set mod_readme=https://gibberlings3.github.io/Documentation/readmes/readme-keldorn_rom.txt
 
 REM /* MODIFY: if you don't need to build a specific package, you can disable it by setting the appropriate variable below to 0 */
-set build_windows=1
+set build_windows_zip=1
+set build_windows=0
 set build_osx=1
 set build_linux=1
 
