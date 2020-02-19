@@ -4,6 +4,7 @@ IF
     PartyHasItem("b!zajour") 
     !GlobalGT("B!KelPickLock","GLOBAL",0) 
     !PartyHasItem("b!zakey") 
+    !Dead("b!zash")
 THEN 
     RESPONSE #100 
         MoveGlobalObject("b!zash",Player1) 

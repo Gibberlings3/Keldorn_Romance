@@ -24,3 +24,13 @@ THEN
     RESPONSE #100 
         StartDialogue("b!zash",Player1) 
 END 
+
+IF
+    Dead("b!zash")
+    Exists("b!zash")
+    Global("B!KelZashRemove","LOCALS",0) 
+THEN 
+    RESPONSE #100 
+	SetGlobal("B!KelZashRemove","LOCALS",1) 
+	DestroySelf()
+END
