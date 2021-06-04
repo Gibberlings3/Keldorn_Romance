@@ -1,6 +1,6 @@
 berelinde's Keldorn Romance
 
-Version 6
+Version 7
 Languages: English
 Platforms: Windows, Linux, OSX
 
@@ -82,6 +82,10 @@ lover, Keldorn."
 
 This is really not the romance for multi-romancers. Any committed romance
 will kill Keldorn's.
+
+The SoA romance is complete if he gives the PC a ring.
+
+In ToB, wait for his dialogue about the first Pocket Plane challenge. After that, resting should trigger a lovetalk. As of v7, this rest can be anywhere (up to v6 it needed to be in the Pocket Plane).
 
 Note: With version 4, multi romance cheat can be set via console: Other romance detection can be disabled by setting 
 Global("B!Kel_MultiRomances","GLOBAL",1).
@@ -167,6 +171,10 @@ Feel free to interject into quest or romance dialogue, or comment upon it in you
 ==================================================
 IX.    Version History
 ==================================================
+
+Version 7:
+-first rest lovetalk in ToB should trigger outside of the Pocket Plane, too.
+-added dynamic install order syntax and global labels to support Project Infinity.
 
 Version 6
 -Anomen should not stutter after his love night (added check variables to b!anomen_romfix.baf to prevent looping of scriptblocks).
