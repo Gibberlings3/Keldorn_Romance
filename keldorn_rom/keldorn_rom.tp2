@@ -4,7 +4,7 @@
 BACKUP ~keldorn_rom/backup~ 
 AUTHOR ~http://gibberlings3.net/forums/~ // berelinde
 
-VERSION ~6~ 
+VERSION ~7~ 
 
 README ~keldorn_rom/docs/readme-keldorn_rom.txt~ 
 
@@ -76,6 +76,7 @@ END //ALWAYS
 LANGUAGE ~English~ ~english~ ~keldorn_rom/tra/english/setup.tra~ 
 
 BEGIN @50000 
+LABEL berelinde-keldorn_rom-main
 REQUIRE_PREDICATE ENGINE_IS ~tob bg2ee~ @50001 
 
 APPEND ~STATE.IDS~
@@ -693,21 +694,25 @@ EXTEND_TOP    ~anomen.bcs~  ~keldorn_rom/script/b!anomen_romfix.baf~
 
 
 BEGIN @50002 
+LABEL berelinde-keldorn_rom-RomanceMatchLGNG
 REQUIRE_COMPONENT ~setup-keldorn_rom.tp2~ ~0~ @50003 
 FORCED_SUBCOMPONENT @50004
     EXTEND_BOTTOM ~baldur.bcs~ ~keldorn_rom/script/b!lgng.baf~ 
     
-BEGIN  @50005
+BEGIN  @50005 
+LABEL berelinde-keldorn_rom-RomanceMatchLGNGCG
 REQUIRE_COMPONENT ~setup-keldorn_rom.tp2~ ~0~ @50003 
 FORCED_SUBCOMPONENT @50004 
     EXTEND_BOTTOM ~baldur.bcs~ ~keldorn_rom/script/b!lgngcg.baf~ 
     
-BEGIN  @50006
+BEGIN  @50006 
+LABEL berelinde-keldorn_rom-RomanceMatchLGNGCGLN
 REQUIRE_COMPONENT ~setup-keldorn_rom.tp2~ ~0~ @50003 
 FORCED_SUBCOMPONENT @50004 
     EXTEND_BOTTOM ~baldur.bcs~ ~keldorn_rom/script/b!lgngcgln.baf~ 
     
-BEGIN  @50007
+BEGIN  @50007 
+LABEL berelinde-keldorn_rom-RomanceMatchLGNGCGLNN
 REQUIRE_COMPONENT ~setup-keldorn_rom.tp2~ ~0~ @50003 
 FORCED_SUBCOMPONENT @50004 
     EXTEND_BOTTOM ~baldur.bcs~ ~keldorn_rom/script/b!lgngcglntn.baf~ 
@@ -725,7 +730,8 @@ FORCED_SUBCOMPONENT ~NPC Comments~
     EXTEND_TOP ~keldorn.bcs~ ~keldorn_rom/script/b!no_npc_comments.baf~ 
 */
 
-BEGIN  @50008
+BEGIN  @50008 
+LABEL berelinde-keldorn_rom-YouthfulPortrait
 REQUIRE_COMPONENT ~setup-keldorn_rom.tp2~ ~0~ @50003 
       COPY ~keldorn_rom/bmp/senka_l.bmp~  ~override/nkeldorl.bmp~
   ACTION_IF GAME_IS ~bgt tob~ THEN BEGIN
@@ -781,7 +787,8 @@ COPY_EXISTING ~keldord.bcs~ ~override~
 
 /*  component: ~Select Keldorn's dialogue timer:~ */
 
-BEGIN @50012  /*  ~Speed: minimum 10 minutes (SoA)/15 minutes (ToB) real time between dialogues~ */
+BEGIN @50012  /*  ~Speed: minimum 10 minutes (SoA)/15 minutes (ToB) real time between dialogues~ */ 
+LABEL berelinde-keldorn_rom-DialogTimer1015
   SUBCOMPONENT @50009 /* ~Select Keldorn's dialogue timer:~ */
   REQUIRE_COMPONENT ~setup-keldorn_rom.tp2~ ~0~ @50003 
 
@@ -792,7 +799,8 @@ BEGIN @50012  /*  ~Speed: minimum 10 minutes (SoA)/15 minutes (ToB) real time be
       COMPILE ~...inlined/romance_timer_temp.d~
 
 
-BEGIN @50013  /*  ~Speed: minimum 20 minutes (SoA)/30 minutes (ToB) real time between dialogues~ */
+BEGIN @50013  /*  ~Speed: minimum 20 minutes (SoA)/30 minutes (ToB) real time between dialogues~ */ 
+LABEL berelinde-keldorn_rom-DialogTimer2030
   SUBCOMPONENT @50009 /* ~Select Keldorn's dialogue timer:~ */
   REQUIRE_COMPONENT ~setup-keldorn_rom.tp2~ ~0~ @50003 
 
@@ -803,7 +811,8 @@ BEGIN @50013  /*  ~Speed: minimum 20 minutes (SoA)/30 minutes (ToB) real time be
       COMPILE ~...inlined/romance_timer_temp.d~
 
 
-BEGIN @50014  /*  ~Speed (Default): minimum 30 minutes (SoA)/45 minutes (ToB) real time between dialogues~ */
+BEGIN @50014  /*  ~Speed (Default): minimum 30 minutes (SoA)/45 minutes (ToB) real time between dialogues~ */ 
+LABEL berelinde-keldorn_rom-DialogTimer3045
   SUBCOMPONENT @50009 /* ~Select Keldorn's dialogue timer:~ */
   REQUIRE_COMPONENT ~setup-keldorn_rom.tp2~ ~0~ @50003 
 
@@ -814,7 +823,8 @@ BEGIN @50014  /*  ~Speed (Default): minimum 30 minutes (SoA)/45 minutes (ToB) re
       COMPILE ~...inlined/romance_timer_temp.d~
 
 
-BEGIN @50015  /*  ~Speed: minimum 45 minutes (SoA)/60 minutes (ToB) real time between dialogues~ */
+BEGIN @50015  /*  ~Speed: minimum 45 minutes (SoA)/60 minutes (ToB) real time between dialogues~ */ 
+LABEL berelinde-keldorn_rom-DialogTimer4560
   SUBCOMPONENT @50009 /* ~Select Keldorn's dialogue timer:~ */
   REQUIRE_COMPONENT ~setup-keldorn_rom.tp2~ ~0~ @50003 
 
@@ -825,7 +835,8 @@ BEGIN @50015  /*  ~Speed: minimum 45 minutes (SoA)/60 minutes (ToB) real time be
       COMPILE ~...inlined/romance_timer_temp.d~
 
 
-BEGIN @50016  /*  ~Speed: minimum 1 hour (SoA)/1.5 hour (ToB) real time between dialogues~ */
+BEGIN @50016  /*  ~Speed: minimum 1 hour (SoA)/1.5 hour (ToB) real time between dialogues~ */ 
+LABEL berelinde-keldorn_rom-DialogTimer6090
   SUBCOMPONENT @50009 /* ~Select Keldorn's dialogue timer:~ */
   REQUIRE_COMPONENT ~setup-keldorn_rom.tp2~ ~0~ @50003 
 
