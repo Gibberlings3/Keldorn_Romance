@@ -1,6 +1,6 @@
 berelinde's Keldorn Romance
 
-Version 7
+Version 8
 Languages: English
 Platforms: Windows, Linux, OSX
 
@@ -171,6 +171,9 @@ Feel free to interject into quest or romance dialogue, or comment upon it in you
 ==================================================
 IX.    Version History
 ==================================================
+
+Version 8:
+-Corrected use of EET compatible global chapter variables. 
 
 Version 7:
 -first rest lovetalk in ToB should trigger outside of the Pocket Plane, too.
