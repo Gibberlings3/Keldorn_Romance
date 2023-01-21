@@ -1,6 +1,5 @@
 berelinde's Keldorn Romance
 
-Version 8
 Languages: English
 Platforms: Windows, Linux, OSX
 
@@ -171,6 +170,9 @@ Feel free to interject into quest or romance dialogue, or comment upon it in you
 ==================================================
 IX.    Version History
 ==================================================
+
+Version 8.1:
+-Changed blackslashes to slashes in the tp2 (fix Linux install issues).
 
 Version 8:
 -Corrected use of EET compatible global chapter variables. 
