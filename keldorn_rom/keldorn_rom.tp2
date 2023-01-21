@@ -4,7 +4,7 @@
 BACKUP ~keldorn_rom/backup~ 
 AUTHOR ~http://gibberlings3.net/forums/~ // berelinde
 
-VERSION ~8~ 
+VERSION ~8.1~ 
 
 README ~keldorn_rom/docs/readme-keldorn_rom.txt~ 
 
@@ -37,7 +37,7 @@ END
 
 /* all following actions are only processed ONCE for the whole mod, independent of un- and reinstalling of single components */
 
-ACTION_IF !FILE_EXISTS ~keldorn_rom\backup/keldornromreinstall.mrk~ BEGIN
+ACTION_IF !FILE_EXISTS ~keldorn_rom/backup/keldornromreinstall.mrk~ BEGIN
 
 
 ACTION_DEFINE_ARRAY fl#noconvert BEGIN setup END
@@ -48,24 +48,24 @@ ACTION_DEFINE_ARRAY fl#reload BEGIN game END
     INT_VAR
       infer_charset = 1
     STR_VAR
-      tra_path = EVAL ~keldorn_rom\Tra~
+      tra_path = EVAL ~keldorn_rom/Tra~
       noconvert_array = fl#noconvert
       reload_array = fl#reload
   END
 
 
 
-COPY ~keldorn_rom\lib/component.xx~ ~keldorn_rom\backup/keldornromreinstall.mrk~
+COPY ~keldorn_rom/lib/component.xx~ ~keldorn_rom/backup/keldornromreinstall.mrk~
 
 END //keldornromreinstall.mrk
 
 
     //TRAs declared in LANGUAGE must be reloaded
-  LOAD_TRA ~keldorn_rom\tra/%LANGUAGE%/game.tra~
-  LOAD_TRA ~keldorn_rom\tra/%LANGUAGE%/setup.tra~
+  LOAD_TRA ~keldorn_rom/tra/%LANGUAGE%/game.tra~
+  LOAD_TRA ~keldorn_rom/tra/%LANGUAGE%/setup.tra~
 
 ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
-  LOAD_TRA ~keldorn_rom\tra/%LANGUAGE%/game_ee.tra~
+  LOAD_TRA ~keldorn_rom/tra/%LANGUAGE%/game_ee.tra~
 END
 
 
@@ -108,7 +108,7 @@ UNLESS ~b!zakey~
 
 
 
-ADD_JOURNAL TITLE (@10021) @10000 @10001 @10002 @10003 @10004 @10005 @10006 @10007 @10008 @10009 @10010 @10011 @10012 @10013 @10014 @10015 @10016 @10017 @10018 @10019 @10020  USING ~keldorn_rom\tra/%LANGUAGE%/game.tra~
+ADD_JOURNAL TITLE (@10021) @10000 @10001 @10002 @10003 @10004 @10005 @10006 @10007 @10008 @10009 @10010 @10011 @10012 @10013 @10014 @10015 @10016 @10017 @10018 @10019 @10020  USING ~keldorn_rom/tra/%LANGUAGE%/game.tra~
 
 /* Music */ 
 
@@ -585,11 +585,11 @@ END
 
 ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
 COPY ~keldorn_rom/areas/b!inn1_ee.mos~ ~override/b!inn1.mos~ 
-COPY_EXISTING ~ar0041.mos~ ~override\b!aley.mos~
-COPY_EXISTING ~ar0318.mos~ ~override\b!hovl.mos~
-COPY_EXISTING ~ar0332.mos~ ~override\b!bord.mos~
-COPY_EXISTING ~ar0531.mos~ ~override\b!celr.mos~
-COPY_EXISTING ~ar0905.mos~ ~override\b!safe.mos~
+COPY_EXISTING ~ar0041.mos~ ~override/b!aley.mos~
+COPY_EXISTING ~ar0318.mos~ ~override/b!hovl.mos~
+COPY_EXISTING ~ar0332.mos~ ~override/b!bord.mos~
+COPY_EXISTING ~ar0531.mos~ ~override/b!celr.mos~
+COPY_EXISTING ~ar0905.mos~ ~override/b!safe.mos~
 END
 
 COPY_EXISTING ~b!inn1.are~ ~override~    // Zasheida's room
